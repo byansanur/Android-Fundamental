@@ -8,4 +8,4 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid4 : List view
 - FundametalAndroid5 : Library
 - FundametalAndroid5Lanjutan : Debuging
-- FundametalAndroid5Mvc : Design pattern mvc & testing
+- FundametalAndroid5DesignPattern : Design pattern mvc & testing
