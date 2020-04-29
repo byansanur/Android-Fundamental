@@ -1,7 +1,7 @@
 # Android-Fundamental
 Fundamental Android for Learn everywhere
 
-# Strktur file
+# Struktur file
 - FundametalAndroid1 : Logic untuk menghitung Volume balok P*L*T
 - FundametalAndroid2 : Intent
 - FundametalAndroid3 : Fragment
