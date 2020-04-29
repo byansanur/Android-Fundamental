@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FundametalAndroid5DesignPattern</string>
+    <string name="width">Lebar</string>
+    <string name="result">Hasil</string>
+    <string name="calculate">Hitung</string>
+    <string name="height">Tinggi</string>
+    <string name="length">Panjang</string>
+    <string name="calculate_volume">Calculate volume</string>
+    <string name="calculate_circumference">Calculate circumference</string>
+    <string name="calculate_surface_area">Calculate surface area</string>
+    <string name="save">save</string>
+</resources>
