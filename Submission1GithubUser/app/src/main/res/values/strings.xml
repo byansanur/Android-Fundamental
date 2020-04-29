@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Submission1GithubUser</string>
+    <string name="app_name">GitHub User</string>
     <string name="username">Username</string>
     <string name="nama_lengkap">Nama lengkap</string>
     <string name="location">Location</string>
