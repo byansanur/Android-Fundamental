@@ -6,4 +6,6 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid2 : Intent
 - FundametalAndroid3 : Fragment
 - FundametalAndroid4 : List view
-- FundametalAndroid5 : Library, Debuging, Testing
+- FundametalAndroid5 : Library
+- FundametalAndroid5Lanjutan : Debuging
+- FundametalAndroid5Testing : Testing
