@@ -9,5 +9,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // mengganti nilai dari judul halaman pada actionbar di dalam MainActivity.
+        supportActionBar?.title = "Google Pixel"
     }
 }
