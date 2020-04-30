@@ -22,7 +22,7 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
         val holder = Holder(view as View)
         val user = getItem(i) as DataSource
         holder.bind(user)
-        view.setOnClickListener { v ->
+        view.setOnClickListener { _ ->
             val intent = Intent(context, DetailUserActivity::class.java)
             intent.putExtra(DetailUserActivity.EXTRA_USER, user)
             context.startActivity(intent)

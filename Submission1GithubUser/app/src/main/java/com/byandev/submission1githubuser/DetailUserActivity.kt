@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.toolbar.*
@@ -13,7 +14,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 class DetailUserActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_USER = "name"
+        const val EXTRA_USER = "user"
     }
 
 
@@ -30,6 +31,8 @@ class DetailUserActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_user)
         setupUI()
         setupIntent()
+        toolbar?.navigationIcon = ContextCompat.getDrawable(this,R.drawable.ic_arrow_back_black_24dp)
+        toolbar?.setNavigationOnClickListener { onBackPressed() }
     }
 
     private fun setupUI() {

@@ -69,7 +69,8 @@
 
                 <TextView
                     android:id="@+id/tvFollower"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:layout_marginEnd="6dp"
@@ -80,7 +81,8 @@
 
                 <TextView
                     android:id="@+id/tvFollowing"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
                     android:text="@string/location"
@@ -91,7 +93,8 @@
 
                 <TextView
                     android:id="@+id/tvRepository"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:textAlignment="center"
                     android:layout_height="wrap_content"
                     android:text="@string/location"
