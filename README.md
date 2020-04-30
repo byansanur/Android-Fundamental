@@ -9,3 +9,4 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid5 : Library
 - FundametalAndroid5Lanjutan : Debuging
 - FundametalAndroid5DesignPattern : Design pattern mvvm & testing
+- FundametalAndroid6 : View & ViewGroup
