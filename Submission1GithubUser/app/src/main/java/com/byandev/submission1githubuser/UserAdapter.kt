@@ -14,15 +14,15 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
 
     internal var users = arrayListOf<DataSource>()
 
-    override fun getView(i: Int, convertView: View?, parent: ViewGroup?): View {
-        var itemView = convertView
-        if (itemView == null) {
-            itemView = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false)
+    override fun getView(i: Int, viewItem: View?, group: ViewGroup?): View {
+        var view = viewItem
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.item_user, group, false)
         }
-        val viewHolder = Holder(itemView as View)
+        val holder = Holder(view as View)
         val user = getItem(i) as DataSource
-        viewHolder.bind(user)
-        itemView.setOnClickListener { v ->
+        holder.bind(user)
+        view.setOnClickListener { v ->
             val intent = Intent(context, DetailUserActivity::class.java)
             intent.putExtra("avatar", user.avatar)
             intent.putExtra("company", user.company)
@@ -35,7 +35,7 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
             context.startActivity(intent)
         }
 
-        return itemView
+        return view
     }
 
     private inner class Holder internal constructor(view: View) {
