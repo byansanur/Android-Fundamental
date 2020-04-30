@@ -24,14 +24,7 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
         holder.bind(user)
         view.setOnClickListener { v ->
             val intent = Intent(context, DetailUserActivity::class.java)
-            intent.putExtra("avatar", user.avatar)
-            intent.putExtra("company", user.company)
-            intent.putExtra("follower", user.follower)
-            intent.putExtra("following", user.following)
-            intent.putExtra("location", user.location)
-            intent.putExtra("name", user.name)
-            intent.putExtra("repository", user.repository)
-            intent.putExtra("username", user.username)
+            intent.putExtra(DetailUserActivity.EXTRA_USER, user)
             context.startActivity(intent)
         }
 
@@ -50,7 +43,7 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
             tvUserName.text = user.username
             tvFollower.text = "Follower\n" + user.follower
             tvFollowing.text = "Following\n" + user.following
-            imgUsers.setImageResource(user.avatar.toInt())
+            imgUsers.setImageResource(user.avatar!!.toInt())
             tvRepository.text = "Repository\n" + user.repository
         }
 

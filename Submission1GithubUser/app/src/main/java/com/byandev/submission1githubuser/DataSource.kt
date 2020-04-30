@@ -4,35 +4,34 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class DataSource(
-    val avatar: String,
-    val company: String,
-    val follower: Int,
-    val following: Int,
-    val location: String,
-    val name: String,
-    val repository: Int,
-    val username: String
+    val avatar: String?,
+    val company: String?,
+    val follower: Int?,
+    val following: Int?,
+    val location: String?,
+    val name: String?,
+    val repository: Int?,
+    val username: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString().toString(),
-        parcel.readString().toString(),
-        parcel.readInt(),
-        parcel.readInt(),
-        parcel.readString().toString(),
-        parcel.readString().toString(),
-        parcel.readInt(),
-        parcel.readString().toString()
-    ) {
-    }
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readString()
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(avatar)
         parcel.writeString(company)
-        parcel.writeInt(follower)
-        parcel.writeInt(following)
+        parcel.writeValue(follower)
+        parcel.writeValue(following)
         parcel.writeString(location)
         parcel.writeString(name)
-        parcel.writeInt(repository)
+        parcel.writeValue(repository)
         parcel.writeString(username)
     }
 

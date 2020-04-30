@@ -1,24 +1,19 @@
 package com.byandev.submission1githubuser
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.toolbar.*
 
 @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class DetailUserActivity : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_AVATAR = "avatar"
-        const val EXTRA_COMPANY = "company"
-        const val EXTRA_FOLLOWER = "follower"
-        const val EXTRA_FOLLOWING = "following"
-        const val EXTRA_LOCATION = "location"
         const val EXTRA_USER = "name"
-        const val EXTRA_REPOSITORY = "repository"
-        const val EXTRA_USERNAME = "username"
     }
 
 
@@ -48,27 +43,22 @@ class DetailUserActivity : AppCompatActivity() {
     }
 
     private fun setupIntent() {
-        val avatar = intent.getStringExtra(EXTRA_AVATAR)
-        val company = intent.getStringExtra(EXTRA_COMPANY)
-        val follower = intent.getIntExtra(EXTRA_FOLLOWER, 0)
-        val following = intent.getIntExtra(EXTRA_FOLLOWING, 0)
-        val location = intent.getStringExtra(EXTRA_LOCATION)
-        val name = intent.getStringExtra(EXTRA_USER)
-        val repo = intent.getIntExtra(EXTRA_REPOSITORY, 0)
-        val uname = intent.getStringExtra(EXTRA_USERNAME)
+        val user = intent.getParcelableExtra(EXTRA_USER) as DataSource
 
-        toolbar.title = name
+        toolbar.title = user.name
 
-        tvUserNameDetail.text = uname
-        tvCompanyUser.text = company
-        tvLocationUser.text = location
-        tvCountFollower.text = follower.toString()
-        tvCountRepository.text = repo.toString()
-        tvCountFollowing.text = following.toString()
+        val avatars = user.avatar!!.toInt()
+
+        tvUserNameDetail.text = user.username
+        tvCompanyUser.text = user.company
+        tvLocationUser.text = user.location
+        tvCountFollower.text = user.follower.toString()
+        tvCountRepository.text = user.repository.toString()
+        tvCountFollowing.text = user.following.toString()
 
         Glide.with(this)
-            .load(avatar.toInt())
-            .centerInside()
+            .load(avatars)
+            .centerCrop()
             .circleCrop()
             .into(imgUser)
     }
