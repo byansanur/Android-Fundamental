@@ -1,5 +1,6 @@
 package com.byandev.submission1githubuser
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -39,15 +40,18 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
 
     private inner class Holder internal constructor(view: View) {
         private val tvUserName: TextView = view.findViewById(R.id.tvUserName)
-        private val tvNamaLengkap: TextView = view.findViewById(R.id.tvNamaLengkap)
-        private val tvLocation: TextView = view.findViewById(R.id.tvLocation)
+        private val tvFollower: TextView = view.findViewById(R.id.tvFollower)
+        private val tvFollowing: TextView = view.findViewById(R.id.tvFollowing)
+        private val tvRepository: TextView = view.findViewById(R.id.tvRepository)
         private val imgUsers: CircleImageView = view.findViewById(R.id.imgUsers)
 
+        @SuppressLint("SetTextI18n")
         internal fun bind(user: DataSource) {
             tvUserName.text = user.username
-            tvNamaLengkap.text = user.name
-            tvLocation.text = user.location
+            tvFollower.text = "Follower\n" + user.follower
+            tvFollowing.text = "Following\n" + user.following
             imgUsers.setImageResource(user.avatar.toInt())
+            tvRepository.text = "Repository\n" + user.repository
         }
 
     }

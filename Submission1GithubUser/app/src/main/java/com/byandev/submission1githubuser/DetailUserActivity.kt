@@ -1,9 +1,13 @@
 package com.byandev.submission1githubuser
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.toolbar.*
 
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class DetailUserActivity : AppCompatActivity() {
 
     companion object {
@@ -17,20 +21,56 @@ class DetailUserActivity : AppCompatActivity() {
         const val EXTRA_USERNAME = "username"
     }
 
+
+    private lateinit var tvUserNameDetail: TextView
+    private lateinit var tvCompanyUser: TextView
+    private lateinit var tvLocationUser: TextView
+    private lateinit var tvCountFollower: TextView
+    private lateinit var tvCountFollowing: TextView
+    private lateinit var tvCountRepository: TextView
+    private lateinit var imgUser: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_user)
-        val tvNameDetail: TextView = findViewById(R.id.tvNameDetail)
+        initialize()
+        initializeIntent()
+    }
 
+    private fun initialize() {
+
+        tvUserNameDetail = findViewById(R.id.tvUserName)
+        imgUser = findViewById(R.id.imgUser)
+        tvCompanyUser = findViewById(R.id.tvCompany)
+        tvLocationUser = findViewById(R.id.tvLocation)
+        tvCountFollower = findViewById(R.id.tvCountFollower)
+        tvCountFollowing = findViewById(R.id.tvCountFollowing)
+        tvCountRepository = findViewById(R.id.tvCountRepository)
+    }
+
+    private fun initializeIntent() {
         val avatar = intent.getStringExtra(EXTRA_AVATAR)
         val company = intent.getStringExtra(EXTRA_COMPANY)
-        val follower = intent.getStringExtra(EXTRA_FOLLOWER)
-        val following = intent.getStringExtra(EXTRA_FOLLOWING)
+        val follower = intent.getIntExtra(EXTRA_FOLLOWER, 0)
+        val following = intent.getIntExtra(EXTRA_FOLLOWING, 0)
         val location = intent.getStringExtra(EXTRA_LOCATION)
         val name = intent.getStringExtra(EXTRA_USER)
-        val repo = intent.getStringExtra(EXTRA_REPOSITORY)
+        val repo = intent.getIntExtra(EXTRA_REPOSITORY, 0)
         val uname = intent.getStringExtra(EXTRA_USERNAME)
-        val text = name
-        tvNameDetail.text = text
+
+        toolbar.title = name
+
+        tvUserNameDetail.text = uname
+        tvCompanyUser.text = company
+        tvLocationUser.text = location
+        tvCountFollower.text = follower.toString()
+        tvCountRepository.text = repo.toString()
+        tvCountFollowing.text = following.toString()
+
+        Glide.with(this)
+            .load(avatar.toInt())
+            .centerInside()
+            .circleCrop()
+            .into(imgUser)
     }
 }

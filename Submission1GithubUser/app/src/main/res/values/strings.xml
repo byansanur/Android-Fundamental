@@ -3,6 +3,12 @@
     <string name="username">Username</string>
     <string name="nama_lengkap">Nama lengkap</string>
     <string name="location">Location</string>
+    <string name="selengknya">Selengknya</string>
+    <string name="_0">0</string>
+    <string name="follower">Follower</string>
+    <string name="repository">Repository</string>
+    <string name="following">Following</string>
+    <string name="todo">TODO</string>
     <string-array name="username">
         <item>JakeWharton</item>
         <item>amitshekhariitbhu</item>

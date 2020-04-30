@@ -4,22 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
+        android:background="@drawable/background_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgUsers"
-            android:layout_width="85dp"
+            android:layout_width="60dp"
             android:layout_height="85dp"
+            android:layout_marginStart="8dp"
             android:src="@drawable/user1"
             app:civ_border_color="@color/colorPrimary"
             app:civ_border_overlay="true"
@@ -31,36 +35,73 @@
             android:orientation="vertical"
             android:layout_margin="8dp">
 
-            <TextView
-                android:id="@+id/tvUserName"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/username"
-                android:textColor="#272727"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvNamaLengkap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_account_box_black_24dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/nama_lengkap"
-                android:textColor="#9F9D9D"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+                    android:textColor="#9F9D9D"
+                    android:textSize="13sp"
+                    android:gravity="end" />
 
-            <TextView
-                android:id="@+id/tvLocation"
-                android:layout_width="wrap_content"
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:drawableStart="@drawable/ic_location_on_black_24dp"
-                android:text="@string/location"
-                android:textColor="#9F9D9D"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp">
+
+                <TextView
+                    android:id="@+id/tvFollower"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_marginEnd="6dp"
+                    android:text="@string/nama_lengkap"
+                    android:textColor="#9F9D9D"
+                    android:textSize="14sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvFollowing"
+                    android:layout_width="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"
+                    android:layout_marginEnd="6dp"
+                    android:textColor="#9F9D9D"
+                    android:textSize="14sp"
+                    tools:ignore="SmallSp" />
+
+                <TextView
+                    android:id="@+id/tvRepository"
+                    android:layout_width="wrap_content"
+                    android:textAlignment="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location"
+                    android:textColor="#9F9D9D"
+                    android:textSize="14sp"
+                    tools:ignore="SmallSp" />
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 

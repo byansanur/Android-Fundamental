@@ -1,21 +1,19 @@
 package com.byandev.submission1githubuser
 
-import android.content.Intent
 import android.content.res.TypedArray
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AdapterView
 import android.widget.ListView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.toolbar.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: UserAdapter
     private lateinit var dataName: Array<String>
     private lateinit var dataCompany: Array<String>
-    private lateinit var dataFollower: TypedArray
-    private lateinit var dataFollowing: TypedArray
-    private lateinit var dataRepository: TypedArray
+    private lateinit var dataFollower: Array<String>
+    private lateinit var dataFollowing: Array<String>
+    private lateinit var dataRepository: Array<String>
     private lateinit var dataUserName: Array<String>
     private lateinit var dataLocation: Array<String>
     private lateinit var dataPhoto: TypedArray
@@ -29,18 +27,13 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.lv_list)
         adapter = UserAdapter(this)
         listView.adapter = adapter
+        toolbar.title = resources.getString(R.string.app_name)
     }
 
     override fun onStart() {
         super.onStart()
         prepareData()
         addItemToAdapter()
-//        listView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
-//            Toast.makeText(this@MainActivity, userss[position].name, Toast.LENGTH_SHORT).show()
-//            val users = DataSource
-//            val intent = Intent(this, DetailUserActivity::class.java)
-//            intent.putExtra(DetailUserActivity.EXTRA_USER, users)
-//        }
     }
 
     private fun addItemToAdapter() {
@@ -48,11 +41,11 @@ class MainActivity : AppCompatActivity() {
             val users = DataSource(
                 dataPhoto.getResourceId(position,-1).toString(),
                 dataCompany[position],
-                dataFollower.getResourceId(position, -1),
-                dataFollowing.getResourceId(position, -1),
+                dataFollower[position].toInt(),
+                dataFollowing[position].toInt(),
                 dataLocation[position],
                 dataName[position],
-                dataRepository.getResourceId(position, -1),
+                dataRepository[position].toInt(),
                 dataUserName[position]
             )
             userss.add(users)
@@ -66,8 +59,8 @@ class MainActivity : AppCompatActivity() {
         dataLocation = resources.getStringArray(R.array.location)
         dataPhoto = resources.obtainTypedArray(R.array.avatar)
         dataCompany = resources.getStringArray(R.array.company)
-        dataFollower = resources.obtainTypedArray(R.array.followers)
-        dataFollowing = resources.obtainTypedArray(R.array.following)
-        dataRepository = resources.obtainTypedArray(R.array.repository)
+        dataFollower = resources.getStringArray(R.array.followers)
+        dataFollowing = resources.getStringArray(R.array.following)
+        dataRepository = resources.getStringArray(R.array.repository)
     }
 }
