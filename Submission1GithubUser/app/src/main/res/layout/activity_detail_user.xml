@@ -33,7 +33,7 @@
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/username"
+                tools:text="@string/username"
                 android:layout_gravity="center"
                 android:textStyle="bold"
                 android:textSize="18sp"
@@ -54,7 +54,7 @@
                     android:drawableStart="@drawable/ic_work_black_24dp"
                     android:drawablePadding="4dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/username"
+                    tools:text="@string/username"
                     android:layout_marginEnd="8dp"
                     android:textColor="@color/colorAccent"/>
 
@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="4dp"
                     android:drawableEnd="@drawable/ic_location_on_black_24dp"
-                    android:text="@string/username"
+                    tools:text="@string/username"
                     android:textColor="@color/colorAccent"/>
             </LinearLayout>
 
@@ -103,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="@string/_0"/>
+                        tools:text="@string/_0"/>
 
                     <TextView
                         android:id="@+id/tvCountRepository"
@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="@string/_0"/>
+                        tools:text="@string/_0"/>
 
                     <TextView
                         android:id="@+id/tvCountFollowing"
@@ -125,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:text="@string/_0"/>
+                        tools:text="@string/_0"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -140,7 +140,7 @@
                         android:textAlignment="center"
                         android:textColor="#9F9D9D"
                         android:layout_height="wrap_content"
-                        android:text="@string/follower"/>
+                        tools:text="@string/follower"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -148,7 +148,7 @@
                         android:textAlignment="center"
                         android:textColor="#9F9D9D"
                         android:layout_height="wrap_content"
-                        android:text="@string/repository"/>
+                        tools:text="@string/repository"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -156,7 +156,7 @@
                         android:textAlignment="center"
                         android:textColor="#9F9D9D"
                         android:layout_height="wrap_content"
-                        android:text="@string/following"/>
+                        tools:text="@string/following"/>
                 </LinearLayout>
 
             </LinearLayout>
