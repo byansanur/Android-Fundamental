@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var dataUserName: Array<String>
     private lateinit var dataLocation: Array<String>
     private lateinit var dataPhoto: TypedArray
-    private var userss = arrayListOf<DataSource>()
+    private var userArray = arrayListOf<DataSource>()
     private lateinit var listView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,20 +37,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addItemToAdapter() {
-        for (position in dataUserName.indices) {
-            val users = DataSource(
-                dataPhoto.getResourceId(position,-1).toString(),
-                dataCompany[position],
-                dataFollower[position].toInt(),
-                dataFollowing[position].toInt(),
-                dataLocation[position],
-                dataName[position],
-                dataRepository[position].toInt(),
-                dataUserName[position]
+        for (i in dataUserName.indices) {
+            val usersData = DataSource(
+                dataPhoto.getResourceId(i,-1).toString(),
+                dataCompany[i],
+                dataFollower[i].toInt(),
+                dataFollowing[i].toInt(),
+                dataLocation[i],
+                dataName[i],
+                dataRepository[i].toInt(),
+                dataUserName[i]
             )
-            userss.add(users)
+            userArray.add(usersData)
         }
-        adapter.users = userss
+        adapter.users = userArray
     }
 
     private fun prepareData() {

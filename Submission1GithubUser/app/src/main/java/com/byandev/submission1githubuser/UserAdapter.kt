@@ -14,13 +14,13 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
 
     internal var users = arrayListOf<DataSource>()
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(i: Int, convertView: View?, parent: ViewGroup?): View {
         var itemView = convertView
         if (itemView == null) {
             itemView = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false)
         }
         val viewHolder = Holder(itemView as View)
-        val user = getItem(position) as DataSource
+        val user = getItem(i) as DataSource
         viewHolder.bind(user)
         itemView.setOnClickListener { v ->
             val intent = Intent(context, DetailUserActivity::class.java)
@@ -56,9 +56,9 @@ class UserAdapter internal constructor(private val context: Context) : BaseAdapt
 
     }
 
-    override fun getItem(position: Int): Any = users[position]
+    override fun getItem(i: Int): Any = users[i]
 
-    override fun getItemId(position: Int): Long = position.toLong()
+    override fun getItemId(i: Int): Long = i.toLong()
 
     override fun getCount(): Int = users.size
 

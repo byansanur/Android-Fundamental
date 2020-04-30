@@ -33,12 +33,11 @@ class DetailUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_user)
-        initialize()
-        initializeIntent()
+        setupUI()
+        setupIntent()
     }
 
-    private fun initialize() {
-
+    private fun setupUI() {
         tvUserNameDetail = findViewById(R.id.tvUserName)
         imgUser = findViewById(R.id.imgUser)
         tvCompanyUser = findViewById(R.id.tvCompany)
@@ -48,7 +47,7 @@ class DetailUserActivity : AppCompatActivity() {
         tvCountRepository = findViewById(R.id.tvCountRepository)
     }
 
-    private fun initializeIntent() {
+    private fun setupIntent() {
         val avatar = intent.getStringExtra(EXTRA_AVATAR)
         val company = intent.getStringExtra(EXTRA_COMPANY)
         val follower = intent.getIntExtra(EXTRA_FOLLOWER, 0)
