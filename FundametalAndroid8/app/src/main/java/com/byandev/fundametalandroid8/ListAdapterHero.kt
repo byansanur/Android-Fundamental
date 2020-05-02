@@ -8,9 +8,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_row_hero.view.*
 
-class ListAdapterHero(private val listHero: ArrayList<Hero>) : RecyclerView.Adapter<ListAdapterHero.Holder>() {
+class ListAdapterHero(private val listHero: ArrayList<DataHero>) : RecyclerView.Adapter<ListAdapterHero.Holder>() {
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(hero: Hero) {
+        fun bind(hero: DataHero) {
             with(itemView){
                 Glide.with(itemView.context)
                     .load(hero.photo)
