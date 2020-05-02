@@ -9,6 +9,15 @@ import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.item_row_hero.view.*
 
 class ListAdapterHero(private val listHero: ArrayList<DataHero>) : RecyclerView.Adapter<ListAdapterHero.Holder>() {
+    private var onItemClickCallback: OnItemClickCallback? = null
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: DataHero)
+    }
+
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(hero: DataHero) {
             with(itemView){
@@ -18,6 +27,8 @@ class ListAdapterHero(private val listHero: ArrayList<DataHero>) : RecyclerView.
                     .into(img_item_photo)
                 tv_item_name.text = hero.name
                 tv_item_description.text = hero.description
+
+                itemView.setOnClickListener { onItemClickCallback?.onItemClicked(hero) }
             }
         }
     }
