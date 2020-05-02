@@ -11,15 +11,21 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val list = ArrayList<DataHero>()
+    private var title = "Mode List"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         rv_heroes.setHasFixedSize(true)
+        setActionBarTitle(title)
 
         list.addAll(getListHeroes())
         showRecyclerList()
+    }
+
+    private fun setActionBarTitle(title: String?) {
+        supportActionBar?.title = title
     }
 
     fun getListHeroes(): ArrayList<DataHero> {
@@ -67,14 +73,18 @@ class MainActivity : AppCompatActivity() {
     private fun setMode(selectedMode: Int) {
         when (selectedMode) {
             R.id.action_list -> {
+                title = "Mode List"
                 showRecyclerList()
             }
             R.id.action_grid -> {
+                title = "Mode Grid"
                 showRecyclerGrid()
             }
             R.id.action_cardview -> {
+                title = "Mode Card View"
                 showRecyclerCardView()
             }
         }
+        setActionBarTitle(title)
     }
 }
