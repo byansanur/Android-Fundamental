@@ -140,7 +140,7 @@
                         android:textAlignment="center"
                         android:textColor="#9F9D9D"
                         android:layout_height="wrap_content"
-                        tools:text="@string/follower"/>
+                        android:text="@string/follower"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -148,7 +148,7 @@
                         android:textAlignment="center"
                         android:textColor="#9F9D9D"
                         android:layout_height="wrap_content"
-                        tools:text="@string/repository"/>
+                        android:text="@string/repository"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -156,7 +156,7 @@
                         android:textAlignment="center"
                         android:textColor="#9F9D9D"
                         android:layout_height="wrap_content"
-                        tools:text="@string/following"/>
+                        android:text="@string/following"/>
                 </LinearLayout>
 
             </LinearLayout>
