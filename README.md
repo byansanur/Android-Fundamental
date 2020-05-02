@@ -11,4 +11,4 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid5DesignPattern : Design pattern mvvm & testing
 - FundametalAndroid6 : View & ViewGroup
 - FundametalAndroid7 : Custom view sederhana
-- FundametalAndroid8 : RecyclerView
+- FundametalAndroid8 : RecyclerView (list, grid, cardView)
