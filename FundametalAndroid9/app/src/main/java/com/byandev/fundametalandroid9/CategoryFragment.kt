@@ -8,32 +8,38 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_category.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class CategoryFragment : Fragment() {
-    
+
     companion object {
-        const val TAG_NAME = "tag_name"
-        const val TAG_STOCK = "tag_stock"
+        val EXTRA_NAME = "extra_name"
+        val EXTRA_STOCK = "extra_stock"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_category, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_category_lifestyle.setOnClickListener { v ->
-            val mBundle = Bundle()
-            mBundle.putString(TAG_NAME, "Lifestyle")
-            mBundle.putLong(TAG_STOCK, 9)
-            v.findNavController().navigate(R.id.action_categoryFragment_to_detailCategoryFragment, mBundle)
+
+//        btn_category_lifestyle.setOnClickListener { view ->
+//            val mBundle = Bundle()
+//            mBundle.putString(EXTRA_NAME, "Lifestyle")
+//            mBundle.putLong(EXTRA_STOCK, 7)
+//            view.findNavController().navigate(R.id.action_categoryFragment_to_detailCategoryFragment, mBundle)
+//        }
+
+        // intent with safeArg
+        // check gradle project for implement classpath
+        // and check gradle module for apply plugin safeargs
+        btn_category_lifestyle.setOnClickListener { view ->
+            val toDetailCategoryFragment =
+                CategoryFragmentDirections.actionCategoryFragmentToDetailCategoryFragment()
+            toDetailCategoryFragment.name = "Lifestyle"
+            toDetailCategoryFragment.stock = 7
+            view.findNavController().navigate(toDetailCategoryFragment)
         }
     }
-
 }
