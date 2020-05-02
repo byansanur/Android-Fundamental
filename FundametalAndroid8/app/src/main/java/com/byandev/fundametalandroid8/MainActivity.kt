@@ -12,6 +12,12 @@ class MainActivity : AppCompatActivity() {
 
     private val list = ArrayList<DataHero>()
     private var title = "Mode List"
+    private var mode: Int = 0
+    companion object {
+        private const val STATE_TITLE = "state_string"
+        private const val STATE_LIST = "state_list"
+        private const val STATE_MODE = "state_mode"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,12 +26,35 @@ class MainActivity : AppCompatActivity() {
         rv_heroes.setHasFixedSize(true)
         setActionBarTitle(title)
 
+        if (savedInstanceState == null) {
+            setActionBarTitle(title)
+            list.addAll(getListHeroes())
+            showRecyclerList()
+            mode = R.id.action_list
+        } else {
+            title = savedInstanceState.getString(STATE_TITLE).toString()
+            val stateList = savedInstanceState.getParcelableArrayList<DataHero>(STATE_LIST)
+            val stateMode = savedInstanceState.getInt(STATE_MODE)
+            setActionBarTitle(title)
+            if (stateList != null) {
+                list.addAll(stateList)
+            }
+            setMode(stateMode)
+        }
+
         list.addAll(getListHeroes())
         showRecyclerList()
     }
 
     private fun setActionBarTitle(title: String?) {
         supportActionBar?.title = title
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(STATE_TITLE, title)
+        outState.putParcelableArrayList(STATE_LIST, list)
+        outState.putInt(STATE_MODE, mode)
     }
 
     fun getListHeroes(): ArrayList<DataHero> {
@@ -85,6 +114,7 @@ class MainActivity : AppCompatActivity() {
                 showRecyclerCardView()
             }
         }
+        mode = selectedMode
         setActionBarTitle(title)
     }
 }
