@@ -34,9 +34,9 @@ class DetailCategoryFragment : Fragment() {
         tv_category_name.setText(dataName)
         tv_category_description.setText("Stock : $dataDescription")
 
-//        btn_profile.setOnClickListener(
-//            Navigation.createNavigateOnClickListener(R.id.action_detailCategoryFragment_to_homeFragment)
-//        )
+        btn_profile.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_detailCategoryFragment_to_homeFragment)
+        )
 
     }
 }
