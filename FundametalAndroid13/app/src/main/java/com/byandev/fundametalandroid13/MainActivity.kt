@@ -10,9 +10,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*
+        Kemudian untuk menghubungkan ViewPagerAdapter dengan ViewPager pada MainActivity
+        Anda menggunakan kode berikut:
+         */
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
         view_pager.adapter = viewPagerAdapter
+
+        // untuk menghubungkan TabLayout dan ViewPager, gunakan kode berikut:
         tabs.setupWithViewPager(view_pager)
+
         supportActionBar?.elevation = 0f
     }
 }
