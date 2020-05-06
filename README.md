@@ -16,3 +16,8 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid10 : ActionBar (searchView) 
 - FundametalAndroid11 : Navigation drawer
 - FundametalAndroid12 : Bottom navigation 
+- FundametalAndroid13 : Tablayout
+- FundametalAndroid14 : Localization
+- FundametalAndroid15 : Content Description
+- FundametalAndroid16 : Instrument test esspresso
+- FundametalAndroid17 : Background process (soon)
