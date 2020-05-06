@@ -18,6 +18,5 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid12 : Bottom navigation 
 - FundametalAndroid13 : Tablayout
 - FundametalAndroid14 : Localization
-- FundametalAndroid15 : Content Description
-- FundametalAndroid16 : Instrument test esspresso
-- FundametalAndroid17 : Background process (soon)
+- FundametalAndroid15 : Instrument test esspresso
+- FundametalAndroid16 : Background process (soon)
