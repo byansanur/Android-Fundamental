@@ -14,3 +14,5 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid8 : RecyclerView (list, grid, cardView)
 - FundametalAndroid9 : Navigation component
 - FundametalAndroid10 : ActionBar (searchView) 
+- FundametalAndroid11 : Navigation drawer
+- FundametalAndroid12 : Bottom navigation 
