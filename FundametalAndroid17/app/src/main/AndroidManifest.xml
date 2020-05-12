@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
+            android:name=".MyIntentService"
+            android:exported="false"></service>
+        <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

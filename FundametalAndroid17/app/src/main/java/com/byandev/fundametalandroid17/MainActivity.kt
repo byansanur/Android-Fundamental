@@ -26,7 +26,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startService(mStartServiceIntent) // note : karena kita akan menjalan kan service bukan pindah halaman
             }
             R.id.btn_start_intent_service -> {
-
+                /*
+                Service tersebut akan melakukan pemrosesan obyek Intent yang
+                dikirimkan dan menjalankan suatu proses yang berjalan di background.
+                 */
+                val mStartIntentService = Intent(this, MyIntentService::class.java)
+                mStartIntentService.putExtra(MyIntentService.EXTRA_DURATION, 5000L)
+                startService(mStartIntentService)
             }
             R.id.btn_start_bound_service -> {
 
