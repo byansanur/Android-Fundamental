@@ -1,4 +1,4 @@
-package com.byandev.fundametalandroid18
+package com.byandev.fundametalandroid18.broadcastSms
 
 import android.content.BroadcastReceiver
 import android.content.Context

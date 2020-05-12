@@ -1,4 +1,4 @@
-package com.byandev.fundametalandroid18
+package com.byandev.fundametalandroid18.broadcastSms
 
 import android.Manifest.permission.RECEIVE_SMS
 import android.content.pm.PackageManager
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.byandev.fundametalandroid18.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -23,7 +24,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when {
-            v?.id == R.id.btn_permission -> PermissionManager.check(this, RECEIVE_SMS, SMS_REQUEST_CODE)
+            v?.id == R.id.btn_permission -> PermissionManager.check(this, RECEIVE_SMS,
+                SMS_REQUEST_CODE
+            )
         }
     }
 

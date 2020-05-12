@@ -1,9 +1,10 @@
-package com.byandev.fundametalandroid18
+package com.byandev.fundametalandroid18.broadcastSms
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.byandev.fundametalandroid18.R
 import kotlinx.android.synthetic.main.activity_sms_receiver.*
 
 class SmsReceiverActivity : AppCompatActivity(), View.OnClickListener {
