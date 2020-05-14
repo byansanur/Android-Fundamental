@@ -1,10 +1,12 @@
 package com.byandev.fundametalamdroid20
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.b.ListQuoteActivity
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -23,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getRandomQuote()
+
+        btnAllQuotes.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ListQuoteActivity::class.java))
+        }
     }
 
     private fun getRandomQuote() {
