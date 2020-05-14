@@ -36,7 +36,10 @@ class AlarmReceiver : BroadcastReceiver() {
         val message = intent.getStringExtra(EXTRA_MESSAGE)
         val title = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) TYPE_ONE_TIME else TYPE_REPEATING
         val notifId = if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
-        showToast(context, title, message)
+
+        //Jika Anda ingin menampilkan dengan toast anda bisa menghilangkan komentar pada baris dibawah ini.
+//        showToast(context, title, message)
+
         showAlarmNotification(context, title, message, notifId)
     }
 
@@ -44,7 +47,8 @@ class AlarmReceiver : BroadcastReceiver() {
         Toast.makeText(context, "$title : $message", Toast.LENGTH_LONG).show()
     }
 
-    fun setOneTimeAlarm(context: Context, type: String, date: String, time: String, message: String) { // method nu penting ieu
+    fun setOneTimeAlarm(context: Context, type: String, date: String, time: String, message: String) {
+        // Metode ini digunakan untuk menjalankan alarm one time
 
         // Validasi inputan date dan time terlebih dahulu
         if (isDateInvalid(date,
@@ -112,6 +116,7 @@ class AlarmReceiver : BroadcastReceiver() {
     }
 
     private fun showAlarmNotification(context: Context, title: String, message: String, notifId: Int) {
+        // Gunakan metode ini untuk menampilkan notifikasi
         val CHANNEL_ID = "Channel_1"
         val CHANNEL_NAME = "AlarmManager channel"
         val notificationManagerCompat =
@@ -127,6 +132,10 @@ class AlarmReceiver : BroadcastReceiver() {
             .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .setSound(alarmSound)
 
+        /*
+        Untuk android Oreo ke atas perlu menambahkan notification channel
+        Materi ini akan dibahas lebih lanjut di modul extended
+         */
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(CHANNEL_ID,
                 CHANNEL_NAME,
@@ -145,5 +154,28 @@ class AlarmReceiver : BroadcastReceiver() {
     dengan beragam API dari Android. Metode ini memanfaatkan fasilitas NotificationCompat.
     Untuk bagian OS Oreo ke atas, harus menggunakan NotificationChannel untuk menampilkan Notifikasi.
      */
+    }
+
+    fun setRepeatingAlarm(context: Context, type: String, time: String, message: String) {
+        // Metode ini digunakan untuk menjalankan alarm repeating
+        if (isDateInvalid(time, TIME_FORMAT)) return
+
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(context, AlarmReceiver::class.java)
+        intent.putExtra(EXTRA_MESSAGE, message)
+        val putExtra = intent.putExtra(EXTRA_TYPE, type)
+
+        val timeArray = time.split(":".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
+
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeArray[0]))
+        calendar.set(Calendar.MINUTE, Integer.parseInt(timeArray[1]))
+        calendar.set(Calendar.SECOND, 0)
+
+        val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY,pendingIntent)
+
+        Toast.makeText(context, "Repeating Alarm set up", Toast.LENGTH_SHORT).show()
     }
 }
