@@ -22,6 +22,6 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid16 : Background process
 - FundametalAndroid17 : Service
 - FundametalAndroid18 : Broadcast Receiver
-- FundametalAndroid19 : Alarm Manager *soon
+- FundametalAndroid19 : Alarm Manager
 - FundametalAndroid20 : WebApi (parsing json) *soon
 - FundametalAndroid21 : Job Scheduler *soon
