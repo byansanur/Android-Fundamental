@@ -1,0 +1,2 @@
+rootProject.name='FundametalAndroid23'
+include ':app'
