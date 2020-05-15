@@ -16,6 +16,7 @@ import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 import java.text.DecimalFormat
 
+@Suppress("SameParameterValue")
 class GetCurrentWeatherJobService : JobService() {
 
     companion object {
@@ -134,12 +135,12 @@ class GetCurrentWeatherJobService : JobService() {
         notifId: Int
     )
     {
-        val CHANNEL_ID = "Channel_1"
-        val CHANNEL_NAME = "Job scheduler channel"
+        val channelId = "Channel_1"
+        val channelName = "Job scheduler channel"
 
         val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-        val builder = NotificationCompat.Builder(context, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(context, channelId)
             .setContentTitle(title)
             .setSmallIcon(R.drawable.ic_replay_black_24dp)
             .setContentText(message)
@@ -148,12 +149,12 @@ class GetCurrentWeatherJobService : JobService() {
             .setSound(alarmSound)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(CHANNEL_ID,
-                CHANNEL_NAME,
+            val channel = NotificationChannel(channelId,
+                channelName,
                 NotificationManager.IMPORTANCE_DEFAULT)
             channel.enableVibration(true)
             channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
-            builder.setChannelId(CHANNEL_ID)
+            builder.setChannelId(channelId)
             notificationManagerCompat.createNotificationChannel(channel)
         }
 
