@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FundametalAndroid21</string>
+    <string name="start">Start</string>
+    <string name="cancel">Cancel</string>
+    <string name="description">Click the start button to start the weather task or click the cancel button to cancel the weather task</string>
+    <string name="city">Jakarta</string>
+    <string name="APP_ID">fb161587654f69bd97613e2be8c32a25</string>
+</resources>
