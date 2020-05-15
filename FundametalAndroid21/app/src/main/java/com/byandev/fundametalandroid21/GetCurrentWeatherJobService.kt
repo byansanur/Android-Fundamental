@@ -26,6 +26,7 @@ class GetCurrentWeatherJobService : JobService() {
 
         // isi dengan api key yang sudah di daftarkan pada OpenWeatherMap
 //        internal const val APP_ID = "fb161587654f69bd97613e2be8c32a25"
+        //Job Scheduler hanya bisa dijalankan pada API > 21.
 
     }
 
