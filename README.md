@@ -25,6 +25,6 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid19 : Alarm Manager
 - FundametalAmdroid20 : WebApi (parsing json)
 - FundametalAndroid21 : Job Scheduler
-- FundametalAndroid22 : Work Manager *soon
-- FundametalAndroid23 : Navigasi Task *soon
+- FundametalAndroid22 : Work Manager
+- FundametalAndroid23 : Navigasi Task, Back Task
 - FundametalAndroid24 : View Model *soon
