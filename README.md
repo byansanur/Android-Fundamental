@@ -23,7 +23,7 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid17 : Service
 - FundametalAndroid18 : Broadcast Receiver
 - FundametalAndroid19 : Alarm Manager
-- FundametalAndroid20 : WebApi (parsing json)
+- FundametalAmdroid20 : WebApi (parsing json)
 - FundametalAndroid21 : Job Scheduler *soon
 - FundametalAndroid22 : Work Manager *soon
 - FundametalAndroid23 : Navigasi Task *soon
