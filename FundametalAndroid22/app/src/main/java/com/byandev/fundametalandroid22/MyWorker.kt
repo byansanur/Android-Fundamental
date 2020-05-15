@@ -7,14 +7,12 @@ import android.content.Context.NOTIFICATION_SERVICE
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import androidx.work.ListenableWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.loopj.android.http.SyncHttpClient
 import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
-import java.lang.Exception
 import java.text.DecimalFormat
 
 class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
@@ -29,7 +27,12 @@ class MyWorker(context: Context, workerParams: WorkerParameters) : Worker(contex
     }
 
     private var resultStatus: Result? = null
-
+    /*
+    Metode doWork adalah metode yang akan dipanggil ketika WorkManager berjalan.
+    Kode di dalamnya akan dijalankan di background thread secara otomatis.
+    Metode ini juga mengembalikan nilai berupa Result yang berfungsi untuk
+    mengetahui status WorkManager yang berjalan.
+     */
     override fun doWork(): Result {
         val dataCity = inputData.getString(EXTRA_CITY)
         val result = getCurrentWeather(dataCity)
