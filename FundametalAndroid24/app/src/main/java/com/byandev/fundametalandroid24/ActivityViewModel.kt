@@ -26,7 +26,7 @@ class ActivityViewModel : ViewModel() {
         // request API
         val listItems = ArrayList<WeatherItems>()
 
-        val apiKey = "fb161587654f69bd97613e2be8c32a25"
+        val apiKey = R.string.APP_ID
         val url = "https://api.openweathermap.org/data/2.5/group?id=$city&units=metric&appid=${apiKey}"
 
         val client = AsyncHttpClient()
