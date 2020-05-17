@@ -27,4 +27,4 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid21 : Job Scheduler
 - FundametalAndroid22 : Work Manager
 - FundametalAndroid23 : Navigasi Task, Back Task
-- FundametalAndroid24 : View Model *soon
+- FundametalAndroid24 : View Model
