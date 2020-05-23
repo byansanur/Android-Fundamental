@@ -23,7 +23,7 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField 'String', 'NewsApiKey', NewsApiKey
+        it.buildConfigField 'String', 'TokenKey', TokenKey
     }
 
 
