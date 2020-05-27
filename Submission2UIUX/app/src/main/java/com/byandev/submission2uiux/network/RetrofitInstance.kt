@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class RetrofitClient {
+class RetrofitInstance {
 
     companion object {
         private val retrofit by lazy {
@@ -20,7 +20,8 @@ class RetrofitClient {
                     val tokenKey = TOKEN_KEY
                     val request = chain.request()
                         .newBuilder()
-                        .addHeader("Authorization", tokenKey)
+                        .addHeader("Authorization", "token $tokenKey")
+                        .header("Authorization", "token $tokenKey")
                         .build()
                     chain.proceed(request)
                 }
@@ -31,7 +32,7 @@ class RetrofitClient {
                 .client(client)
                 .build()
         }
-        val api by lazy {
+        val api: ApiEndpoint by lazy {
             retrofit.create(ApiEndpoint::class.java)
         }
     }

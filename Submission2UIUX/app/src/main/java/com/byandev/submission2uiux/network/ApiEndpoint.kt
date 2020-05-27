@@ -3,7 +3,8 @@ package com.byandev.submission2uiux.network
 import com.byandev.submission2uiux.data.model.DetailUser
 import com.byandev.submission2uiux.data.model.FollowersSource
 import com.byandev.submission2uiux.data.model.FollowingSource
-import com.byandev.submission2uiux.data.model.SearchModel
+import com.byandev.submission2uiux.data.model.Item
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,8 +13,8 @@ import retrofit2.http.Query
 interface ApiEndpoint {
     @GET("search/users")
     fun searchUsers(
-        @Query("q") search: String?
-    ): Response<SearchModel>
+        @Query("q") search: String
+    ): Call<Item>
 
     @GET("users/{username}")
     fun detailUser(
