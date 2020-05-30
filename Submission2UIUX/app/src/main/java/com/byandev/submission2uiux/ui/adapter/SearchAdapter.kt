@@ -3,45 +3,57 @@ package com.byandev.submission2uiux.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.data.model.Item
 import kotlinx.android.synthetic.main.item_list_users.view.*
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.Holder>() {
 
-    private val mData = ArrayList<Item>()
+    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    fun setData(items: ArrayList<Item>) {
-        mData.clear()
-        mData.addAll(items)
-        notifyDataSetChanged()
-    }
+    private val differCallback = object : DiffUtil.ItemCallback<Item> () {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem.id == newItem.id
+        }
 
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(searchItem: Item) {
-            with(itemView) {
-                tvUserName.text = searchItem.login
-//                val imgUserUrl = searchItem.avatar_url
-//                Glide.with(this)
-//                    .load(imgUserUrl)
-//                    .centerCrop()
-//                    .circleCrop()
-//                    .into(imgUsers)
-            }
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return  oldItem == newItem
         }
     }
+    val differ = AsyncListDiffer(this, differCallback)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val mView = LayoutInflater.from(parent.context).inflate(R.layout.item_list_users, parent, false)
-        return Holder(mView)
+        return Holder(
+            LayoutInflater.from(parent.context)
+                .inflate(
+                    R.layout.item_list_users,
+                    parent,
+                    false
+                )
+        )
     }
 
-    override fun getItemCount(): Int = mData.size
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(mData[position])
+        val search = differ.currentList[position]
+        holder.itemView.apply {
+            Glide.with(this)
+                .load(search.avatar_url)
+                .centerCrop()
+                .into(imgUsers)
+            tvUserName.text = search?.login
+            setOnClickListener {
+                onItemClickListener?.let { it(search) }
+            }
+        }
     }
 
     private var onItemClickListener: ((Item) -> Unit)? = null
@@ -49,6 +61,5 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.Holder>() {
     fun setOnItemClickListener(listener: (Item) -> Unit) {
         onItemClickListener = listener
     }
-
 
 }

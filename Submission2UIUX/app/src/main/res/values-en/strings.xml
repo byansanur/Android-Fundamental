@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Submission2UIUX</string>
     <string name="personal_access_tokens">2a40a56f2a7d5cd8563fabda6fc448f16d9aee42</string>
@@ -23,5 +24,4 @@
     <string name="github_search">GtiHubSearch</string>
     <string name="no_internet_title">Failed to Connect</string>
     <string name="no_internet_description">Please check your connection and try again</string>
-
 </resources>

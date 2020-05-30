@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_app"
+    app:startDestination="@id/fragmentSearch">
+
+    <fragment
+        android:id="@+id/fragmentSearch"
+        android:name="com.byandev.submission2uiux.ui.fragments.FragmentSearch"
+        android:label="FragmentSearch" >
+        <action
+            android:id="@+id/action_fragmentSearch_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.byandev.submission2uiux.ui.DetailActivity"
+        android:label="DetailActivity" >
+        <argument
+            android:name="search"
+            app:argType="com.byandev.submission2uiux.data.model.Item" />
+    </activity>
+</navigation>

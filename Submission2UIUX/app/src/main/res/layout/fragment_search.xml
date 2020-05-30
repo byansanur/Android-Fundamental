@@ -1,153 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light"
-    android:fitsSystemWindows="true">
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:fitsSystemWindows="true"
-            app:expandedTitleMarginStart="48dp"
-            app:expandedTitleMarginEnd="64dp"
-            app:contentScrim="?attr/colorPrimary">
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:layout_collapseMode="pin">
+                android:layout_height="wrap_content"
+                app:title="@string/github_search"
+                app:titleTextColor="@color/colorAccent"
+                app:layout_scrollFlags="scroll|enterAlways"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_edit_text"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
+
+                <EditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:padding="3dp"
-                    android:background="@drawable/bg_edit_text"
-                    android:layout_marginEnd="14dp">
+                    android:background="@android:color/transparent"
+                    android:hint="@string/search"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/text"
+                    android:textColorHint="@color/text"
+                    android:drawableStart="@drawable/ic_search_blue_24dp"
+                    android:drawablePadding="15dp"
+                    android:textSize="14sp"
+                    android:importantForAutofill="no" />
 
-                    <EditText
-                        android:id="@+id/etSearch"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:hint="@string/search"
-                        android:imeOptions="actionDone"
-                        android:inputType="textCapWords"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:textColor="@color/text"
-                        android:textColorHint="@color/text"
-                        android:drawableStart="@drawable/ic_search_blue_24dp"
-                        android:drawablePadding="15dp"
-                        android:padding="5dp"
-                        android:textSize="14sp"
-                        android:importantForAutofill="no" />
-
-                    <ImageView
-                        android:id="@+id/clearText"
-                        android:visibility="gone"
-                        android:layout_marginStart="8dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:background="@drawable/ic_cancel_black_24dp"
-                        android:contentDescription="@string/todo" />
-
-
-
-                </LinearLayout>
-
-            </androidx.appcompat.widget.Toolbar>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </LinearLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/layoutDataKosong"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvListUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/imgNoData"
+                android:layout_width="200dp"
+                android:layout_height="120dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/blank_data" />
 
-            <ProgressBar
-                android:id="@+id/pbLoading"
-                android:visibility="gone"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <RelativeLayout
-                android:id="@+id/layoutDataKosong"
+            <TextView
+                android:id="@+id/tvNoData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="48dp"
-                android:visibility="invisible">
+                android:text="@string/tidak_ada_data"
+                android:textAlignment="center"
+                android:textColor="@color/text"
+                android:textSize="24sp" />
 
-                <LinearLayout
+            <TextView
+                android:id="@+id/tvNoDataDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lakukan_pencarian_untuk_menampilkan_data"
+                android:textAlignment="center"
+                android:textColor="@color/text"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:visibility="gone"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbSettingsTranslate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_baseline_translate_white_24"
+            android:layout_centerInParent="true"
+            app:backgroundTint="@color/text"
+            android:layout_marginBottom="70dp"/>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/sweepRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListUser"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_margin="24dp"
-                    tools:ignore="UselessParent">
-                    <ImageView
-                        android:id="@+id/imgNoData"
-                        android:layout_width="200dp"
-                        android:layout_height="120dp"
-                        android:src="@drawable/blank_data"
-                        android:contentDescription="@string/todo" />
-
-                    <TextView
-                        android:id="@+id/tvNoData"
-                        android:layout_width="match_parent"
-                        android:textAlignment="center"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tidak_ada_data"
-                        android:textSize="24sp"
-                        android:textColor="@color/text"/>
-
-                    <TextView
-                        android:id="@+id/tvNoDataDesc"
-                        android:textAlignment="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lakukan_pencarian_untuk_menampilkan_data"
-                        android:textSize="14sp"
-                        android:textColor="@color/text"
-                        android:textStyle="normal"/>
-                </LinearLayout>
-
+                    android:layout_height="wrap_content"/>
 
 
             </RelativeLayout>
 
-        </RelativeLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

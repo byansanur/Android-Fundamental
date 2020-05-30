@@ -21,7 +21,6 @@ class RetrofitInstance {
                     val request = chain.request()
                         .newBuilder()
                         .addHeader("Authorization", "token $tokenKey")
-                        .header("Authorization", "token $tokenKey")
                         .build()
                     chain.proceed(request)
                 }

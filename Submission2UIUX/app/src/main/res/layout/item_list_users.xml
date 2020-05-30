@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:padding="8dp"
         android:gravity="center"
         android:background="@drawable/background_item"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,10 +22,10 @@
 
         <ImageView
             android:id="@+id/imgUsers"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/user1" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/background_item"
+            android:src="@drawable/user1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,6 +42,7 @@
                     android:id="@+id/tvUserName"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
                     android:layout_height="wrap_content"
                     tools:text="username"
                     android:textColor="@color/colorPrimaryDark"
