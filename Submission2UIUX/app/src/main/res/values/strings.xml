@@ -23,5 +23,6 @@
     <string name="github_search">GtiHubSearch</string>
     <string name="no_internet_title">Failed to Connect</string>
     <string name="no_internet_description">Please check your connection and try again</string>
+    <string name="username">Username</string>
 
 </resources>

@@ -24,4 +24,5 @@
     <string name="github_search">GtiHubSearch</string>
     <string name="no_internet_title">Gagal Menyambung</string>
     <string name="no_internet_description">silakan periksa koneksi Anda dan coba lagi</string>
+    <string name="username">Username</string>
 </resources>

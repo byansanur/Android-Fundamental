@@ -1,4 +1,4 @@
-package com.byandev.submission2uiux.ui.viewModel.followers
+package com.byandev.submission2uiux.ui.viewModel.detailUser
 
 import android.app.Application
 import android.content.Context
@@ -9,59 +9,53 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.byandev.submission2uiux.SearchApplication
-import com.byandev.submission2uiux.data.model.FollowersSource
-import com.byandev.submission2uiux.data.repo.FollowFollowListRepository
-import com.byandev.submission2uiux.utils.Constants
+import com.byandev.submission2uiux.data.model.DetailUser
+import com.byandev.submission2uiux.data.repo.DetailUserRepository
 import com.byandev.submission2uiux.utils.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-class FollowersViewModel(
+class DetailUserViewModel(
     app: Application,
-    val followFollowListRepository: FollowFollowListRepository
+    val detailUserRepository: DetailUserRepository
 ) : AndroidViewModel(app) {
 
-    val userFollowers: MutableLiveData<Resource<FollowersSource>> = MutableLiveData()
-    var usersFollowersPage = Constants.QUERY_PAGE_SIZE
-    var userFollowersResponse: FollowersSource? = null
+    val detailUsers: MutableLiveData<Resource<DetailUser>> = MutableLiveData()
+    var detailUsersResponse: DetailUser? = null
 
-    fun followersFetch(userName: String) = viewModelScope.launch {
-        safeFollowersCall(userName)
+    fun detailUserFetch(userName: String) = viewModelScope.launch {
+        safeDetailCall(userName)
     }
 
-    private fun handleFollowersResponse(response: Response<FollowersSource>) : Resource<FollowersSource> {
+    private fun handleDetailUserResponse(response: Response<DetailUser>) : Resource<DetailUser> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                usersFollowersPage++
-                if(userFollowersResponse == null) {
-                    userFollowersResponse = resultResponse
+                if(detailUsersResponse == null) {
+                    detailUsersResponse = resultResponse
                 } else {
-                    val oldUsers = userFollowersResponse
-                    val newUsers = resultResponse
-                    oldUsers?.apply {
-                        newUsers
-                    }
+                    val oldUsers = detailUsersResponse
+                    oldUsers?.login
                 }
-                return Resource.Success(userFollowersResponse ?: resultResponse)
+                return Resource.Success(detailUsersResponse ?: resultResponse)
             }
         }
         return Resource.Error(response.message())
     }
 
-    private suspend fun safeFollowersCall(userName: String) {
-        userFollowers.postValue(Resource.Loading())
+    private suspend fun safeDetailCall(userName: String) {
+        detailUsers.postValue(Resource.Loading())
         try {
             if(hasInternetConnection()) {
-                val response = followFollowListRepository.userFollowers(userName, usersFollowersPage)
-                userFollowers.postValue(handleFollowersResponse(response))
+                val response = detailUserRepository.fetchDetailUsers(userName)
+                detailUsers.postValue(handleDetailUserResponse(response))
             } else {
-                userFollowers.postValue(Resource.Error("No internet connection"))
+                detailUsers.postValue(Resource.Error("No internet connection"))
             }
         } catch(t: Throwable) {
             when(t) {
-                is IOException -> userFollowers.postValue(Resource.Error("Network Failure"))
-                else -> userFollowers.postValue(Resource.Error("Conversion Error"))
+                is IOException -> detailUsers.postValue(Resource.Error("Network Failure"))
+                else -> detailUsers.postValue(Resource.Error("Conversion Error"))
             }
         }
     }

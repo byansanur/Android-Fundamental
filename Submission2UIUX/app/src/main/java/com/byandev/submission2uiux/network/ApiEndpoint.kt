@@ -17,7 +17,7 @@ interface ApiEndpoint {
     ): Response<SearchModel>
 
     @GET("users/{username}")
-    fun detailUser(
+    suspend fun detailUser(
         @Path("username") username: String
     ): Response<DetailUser>
 

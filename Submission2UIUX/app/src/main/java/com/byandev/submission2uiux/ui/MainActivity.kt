@@ -28,15 +28,6 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, searchViewModelProviderFactory).get(SearchFragmentViewModel::class.java)
 
         searchNavHostFragment.findNavController()
-//        val mFragmentManager = supportFragmentManager
-//        val mHomeFragment = FragmentSearch()
-//        val fragment = mFragmentManager.findFragmentByTag(FragmentSearch::class.java.simpleName)
-//
-//        if (fragment !is FragmentSearch) {
-//            mFragmentManager
-//                .beginTransaction()
-//                .add(R.id.flFragment, mHomeFragment, FragmentSearch::class.java.simpleName)
-//        }
     }
 
 }
