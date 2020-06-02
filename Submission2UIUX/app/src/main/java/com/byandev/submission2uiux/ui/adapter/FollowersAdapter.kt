@@ -8,21 +8,25 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.model.Item
+import com.byandev.submission2uiux.data.model.FollowersSource
 import kotlinx.android.synthetic.main.item_list_users.view.*
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapter.Holder>() {
+class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.Holder>() {
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    private val differCallback = object : DiffUtil.ItemCallback<Item> () {
-        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<FollowersSource> () {
+        override fun areItemsTheSame(oldItem: FollowersSource, newItem: FollowersSource): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
-            return  oldItem == newItem
+        override fun areContentsTheSame(
+            oldItem: FollowersSource,
+            newItem: FollowersSource
+        ): Boolean {
+            return oldItem == newItem
         }
+
     }
     val differ = AsyncListDiffer(this, differCallback)
 
@@ -43,22 +47,22 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.Holder>() {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        val search = differ.currentList[position]
+        val followersSource = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this)
-                .load(search.avatar_url)
+                .load(followersSource.avatar_url)
                 .centerCrop()
                 .into(imgUsers)
-            tvUserName.text = search?.login
+            tvUserName.text = followersSource?.login
             setOnClickListener {
-                onItemClickListener?.let { it(search) }
+                onItemClickListener?.let { it(followersSource) }
             }
         }
     }
 //
-    private var onItemClickListener: ((Item) -> Unit)? = null
+    private var onItemClickListener: ((FollowersSource) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (Item) -> Unit) {
+    fun setOnItemClickListener(listener: (FollowersSource) -> Unit) {
         onItemClickListener = listener
     }
 

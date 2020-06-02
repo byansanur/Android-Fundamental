@@ -24,7 +24,6 @@
             android:id="@+id/imgUsers"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:background="@drawable/background_item"
             android:src="@drawable/user1"/>
 
         <LinearLayout
@@ -45,7 +44,7 @@
                     android:maxLines="1"
                     android:layout_height="wrap_content"
                     tools:text="username"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="?attr/Text_Color"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 

@@ -23,7 +23,7 @@ class FollowFollowViewModel(
     val followFollowListRepository: FollowFollowListRepository
 ) : AndroidViewModel(app) {
 
-    val userFollowers: MutableLiveData<Resource<FollowersSource>> = MutableLiveData()
+    val userFollowers: MutableLiveData<Resource<FollowersSource>> get() = MutableLiveData<Resource<FollowersSource>>()
     var usersFollowersPage = Constants.QUERY_PAGE_SIZE
     var userFollowersResponse: FollowersSource? = null
 
@@ -76,14 +76,18 @@ class FollowFollowViewModel(
         try {
             if(hasInternetConnection()) {
                 val response = followFollowListRepository.userFollowers(userName, usersFollowersPage)
-                userFollowers.postValue(handleFollowersResponse(response))
+//                userFollowers.postValue(handleFollowersResponse(response))
+                userFollowers.value = handleFollowersResponse(response)
             } else {
-                userFollowers.postValue(Resource.Error("No internet connection"))
+//                userFollowers.postValue(Resource.Error("No internet connection"))
+                userFollowers.value = Resource.Error("No internet connection")
             }
         } catch(t: Throwable) {
             when(t) {
-                is IOException -> userFollowers.postValue(Resource.Error("Network Failure"))
-                else -> userFollowers.postValue(Resource.Error("Conversion Error"))
+                is IOException -> userFollowers.value = Resource.Error("Network Failure")
+//                    userFollowers.postValue(Resource.Error("Network Failure"))
+                else -> userFollowers.value = Resource.Error("Conversion Error")
+//                    userFollowers.postValue(Resource.Error("Conversion Error"))
             }
         }
     }

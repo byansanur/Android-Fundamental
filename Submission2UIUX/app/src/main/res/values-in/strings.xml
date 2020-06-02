@@ -25,4 +25,13 @@
     <string name="no_internet_title">Gagal Menyambung</string>
     <string name="no_internet_description">silakan periksa koneksi Anda dan coba lagi</string>
     <string name="username">Username</string>
+    <string name="company">Perusahaan</string>
+    <string name="check_user">Cek user</string>
+    <string name="detail_user">Detail User</string>
+    <string name="setting">Pengaturan</string>
+    <string name="version">Versi</string>
+    <string name="theme">Tema</string>
+    <string name="language">Bahasa</string>
+    <string name="change_language_desc">Ubah bahasa aplikasi ini melalui pengaturan telepon</string>
+    <string name="change_the_theme_in_the_application">Ubah tema dalam aplikasi</string>
 </resources>

@@ -2,7 +2,6 @@ package com.byandev.submission2uiux.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.byandev.submission2uiux.R
+import com.byandev.submission2uiux.data.SaveDataTheme
 import com.byandev.submission2uiux.ui.MainActivity
+import com.byandev.submission2uiux.ui.SettingsActivity
 import com.byandev.submission2uiux.ui.adapter.SearchAdapter
 import com.byandev.submission2uiux.ui.viewModel.search.SearchFragmentViewModel
 import com.byandev.submission2uiux.utils.Constants.Companion.QUERY_PAGE_SIZE
@@ -28,22 +29,36 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+
 class FragmentSearch : Fragment() {
 
     private lateinit var viewModel: SearchFragmentViewModel
     private lateinit var searchAdapter: SearchAdapter
+    lateinit var saveDataTheme: SaveDataTheme
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         return inflater.inflate(R.layout.fragment_search, container, false)
+
     }
 
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        saveDataTheme = SaveDataTheme(context)
+        if (saveDataTheme.loadModeState() == true) {
+            requireActivity().setTheme(R.style.DarkThem)
+//            val conteks = ContextThemeWrapper(activity,R.style.DarkThem)
+//            requireActivity().setTheme(ContextThemeWrapper(activity,R.style.DarkThem))
+        } else {
+//            setTheme(R.style.AppTheme)
+            requireActivity().setTheme(R.style.AppTheme)
+        }
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = (activity as MainActivity).viewModel
@@ -101,11 +116,13 @@ class FragmentSearch : Fragment() {
         })
 
         fbSettingsTranslate.setOnClickListener {
-            val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            val intent = Intent(context, SettingsActivity::class.java)
             context?.startActivity(intent)
         }
 
     }
+
+
 
     private fun textChangeListener() {
         sweepRefresh.isRefreshing = false

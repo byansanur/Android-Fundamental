@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="225dp"
+    android:layout_height="350dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:elevation="2dp"
-    android:background="@android:color/white"
+    android:background="@drawable/bg_bs"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="com.google.android.material.BottomSheet">
 
@@ -12,73 +12,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@drawable/bg_bs"
         android:layout_gravity="center_horizontal"
         android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_baseline_close_24"/>
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgBsUser"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/user1"
             android:layout_gravity="center"
             android:contentDescription="@string/todo"/>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            tools:text="@string/username"
+            android:textSize="18sp"
+            android:maxLines="1"
+            tools:ignore="NestedWeights" />
+
+        <Button
+            android:id="@+id/btnCheckUsers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/username"
-                    android:textSize="22sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/username"
-                    android:textSize="22sp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/tvUserName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    tools:text="@string/nama_lengkap"
-                    android:textSize="22sp"
-                    android:maxLines="1"
-                    tools:ignore="NestedWeights" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    tools:text="@string/nama_lengkap"
-                    android:textSize="22sp"
-                    android:maxLines="1"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
+            android:text="@string/check_user"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/background_item"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"/>
 
     </LinearLayout>
 

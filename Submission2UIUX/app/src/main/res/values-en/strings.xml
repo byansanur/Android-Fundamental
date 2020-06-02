@@ -25,4 +25,13 @@
     <string name="no_internet_title">Failed to Connect</string>
     <string name="no_internet_description">Please check your connection and try again</string>
     <string name="username">Username</string>
+    <string name="company">Company</string>
+    <string name="check_user">Check user</string>
+    <string name="detail_user">Detail User</string>
+    <string name="setting">Setting</string>
+    <string name="version">Version</string>
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
+    <string name="change_language_desc">Change the language of this application through the phone settings</string>
+    <string name="change_the_theme_in_the_application">Change the theme in the application</string>
 </resources>
