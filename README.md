@@ -28,3 +28,5 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid22 : [Work Manager](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid22)
 - FundametalAndroid23 : [Navigasi Task, Back Task](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid23)
 - FundametalAndroid24 : [View Model](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid24)
+- Submission 1 : [GithubUser Local data}(https://github.com/byansanur/Android-Fundamental/tree/master/Submission1GithubUser)
+- Submission 2 : [GithubUserSearch with GithubApi}(https://github.com/byansanur/Android-Fundamental/tree/master/Submission2UIUX)
