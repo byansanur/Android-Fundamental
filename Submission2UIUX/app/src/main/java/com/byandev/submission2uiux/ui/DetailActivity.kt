@@ -48,6 +48,7 @@ class DetailActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, detailUserViewModelProviderFactory)
             .get(DetailUserViewModel::class.java)
 
+        // for follow and following
         val followRepository = FollowFollowListRepository()
         val followViewModelFactory =
             FollowFollowViewModelProviderFactory(
@@ -60,7 +61,7 @@ class DetailActivity : AppCompatActivity() {
         htab_toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
         htab_toolbar.setNavigationOnClickListener { onBackPressed() }
 
-        viewModel.detailUserFetch(userName.login.toString())
+        viewModel.detailUserFetch(userName.login!!)
 
         htab_toolbar.title = userName.login
         htab_header.apply {
@@ -71,7 +72,6 @@ class DetailActivity : AppCompatActivity() {
 
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
         htab_viewpager.adapter = viewPagerAdapter
-
         htab_tabs.setupWithViewPager(htab_viewpager)
 
     }

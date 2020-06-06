@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.ui.fragments.FragmentFollowers
+import com.byandev.submission2uiux.ui.fragments.FragmentFollowing
 
 class ViewPagerAdapter (private val context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
@@ -15,14 +16,14 @@ class ViewPagerAdapter (private val context: Context, fm: FragmentManager) : Fra
     )
 
     override fun getItem(position: Int): Fragment {
-        val fragment = FragmentFollowers.newInstance(position + 1)
-        return fragment
-//        var fragment: Fragment? = null
-//        when(position) {
-//            0 -> fragment = FragmentFollowers()
-//            1 -> fragment = FragmentFollowing()
-//        }
-//        return fragment as Fragment
+//        val fragment = FragmentFollowers.newInstance(position + 1)
+//        return fragment
+        var fragment: Fragment? = null
+        when(position) {
+            0 -> fragment = FragmentFollowers()
+            1 -> fragment = FragmentFollowing()
+        }
+        return fragment as Fragment
     }
 
     override fun getPageTitle(position: Int): CharSequence? {

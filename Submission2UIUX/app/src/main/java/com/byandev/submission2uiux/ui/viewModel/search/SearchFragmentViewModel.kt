@@ -38,9 +38,12 @@ class SearchFragmentViewModel (
                 if(searchUsersResponse == null) {
                     searchUsersResponse = resultResponse
                 } else {
-                    val oldUsers = searchUsersResponse?.items
-                    val newUsers = resultResponse.items
-                    oldUsers?.addAll(newUsers)
+                    for (i in 0 until resultResponse.items.size) {
+                        val oldUsers = searchUsersResponse?.items
+                        val newUsers = resultResponse.items[i]
+                        oldUsers?.contains(newUsers)
+                    }
+                    searchUsers.postValue(Resource.Loading())
                 }
                 return Resource.Success(searchUsersResponse ?: resultResponse)
             }

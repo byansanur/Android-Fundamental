@@ -9,21 +9,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.model.FollowersSource
+import com.byandev.submission2uiux.data.model.FollowingSource
 import kotlinx.android.synthetic.main.item_list_users.view.*
 
-class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.Holder>() {
+class FollowingAdapter : RecyclerView.Adapter<FollowingAdapter.Holder>() {
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    private val differCallback = object : DiffUtil.ItemCallback<FollowersSource> () {
-        override fun areItemsTheSame(oldItem: FollowersSource, newItem: FollowersSource): Boolean {
-            return oldItem.size == newItem.size
+    private val differCallback = object : DiffUtil.ItemCallback<FollowingSource> () {
+        override fun areItemsTheSame(oldItem: FollowingSource, newItem: FollowingSource): Boolean {
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: FollowersSource,
-            newItem: FollowersSource
+            oldItem: FollowingSource,
+            newItem: FollowingSource
         ): Boolean {
             return oldItem == newItem
         }
@@ -51,12 +51,12 @@ class FollowersAdapter : RecyclerView.Adapter<FollowersAdapter.Holder>() {
         val followersSource = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this)
-                .load(followersSource.get(0).avatar_url)
+                .load(followersSource.avatar_url)
                 .centerCrop()
                 .into(imgUsers)
-            tvUserName.text = followersSource?.get(0)?.login
+            tvUserName.text = followersSource?.login
             setOnClickListener {
-                Toast.makeText(context, "followers ${followersSource.get(0).login}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "followers ${followersSource.login}", Toast.LENGTH_SHORT).show()
             }
         }
     }

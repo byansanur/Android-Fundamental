@@ -53,10 +53,7 @@ class FragmentSearch : Fragment() {
         saveDataTheme = SaveDataTheme(context)
         if (saveDataTheme.loadModeState() == true) {
             requireActivity().setTheme(R.style.DarkThem)
-//            val conteks = ContextThemeWrapper(activity,R.style.DarkThem)
-//            requireActivity().setTheme(ContextThemeWrapper(activity,R.style.DarkThem))
         } else {
-//            setTheme(R.style.AppTheme)
             requireActivity().setTheme(R.style.AppTheme)
         }
         super.onViewCreated(view, savedInstanceState)
