@@ -16,13 +16,14 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
+@Suppress("DEPRECATION")
 class DetailUserViewModel(
     app: Application,
-    val detailUserRepository: DetailUserRepository
+    private val detailUserRepository: DetailUserRepository
 ) : AndroidViewModel(app) {
 
     val detailUsers: MutableLiveData<Resource<DetailUser>> = MutableLiveData()
-    var detailUsersResponse: DetailUser? = null
+    private var detailUsersResponse: DetailUser? = null
 
     fun detailUserFetch(userName: String) = viewModelScope.launch {
         safeDetailCall(userName)

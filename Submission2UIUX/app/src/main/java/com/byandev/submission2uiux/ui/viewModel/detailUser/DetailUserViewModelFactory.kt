@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.byandev.submission2uiux.data.repo.DetailUserRepository
 
 @Suppress("UNCHECKED_CAST")
-class DetailUsersViewModelFactory(
-        val app: Application,
-        val detailUserRepository: DetailUserRepository
+class DetailUserViewModelFactory(
+    val app: Application,
+    private val detailUserRepository: DetailUserRepository
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

@@ -28,12 +28,15 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbar.setNavigationOnClickListener { onBackPressed() }
+
         switch = findViewById<View>(R.id.swTheme) as Switch?
         if (saveDataTheme.loadModeState() == true) {
             switch!!.isChecked = true
         }
 
-        switch!!.setOnCheckedChangeListener { buttonView, isChecked ->
+        switch!!.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 saveDataTheme.setDarkModeState(true)
                 resetApp()
@@ -53,7 +56,8 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun resetApp() {
-        val i = Intent(applicationContext, SettingsActivity::class.java)
+        val i = Intent(applicationContext, MainActivity::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(i)
         finish()
     }

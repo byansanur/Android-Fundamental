@@ -3,7 +3,7 @@ package com.byandev.submission2uiux.data.model
 
 data class DetailUser(
     val avatar_url: String,
-    val bio: String,
+    val bio: Any,
     val blog: String,
     val company: String,
     val created_at: String,
@@ -30,6 +30,7 @@ data class DetailUser(
     val site_admin: Boolean,
     val starred_url: String,
     val subscriptions_url: String,
+    val twitter_username: Any,
     val type: String,
     val updated_at: String,
     val url: String

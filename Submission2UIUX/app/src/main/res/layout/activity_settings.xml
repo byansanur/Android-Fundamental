@@ -46,34 +46,36 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="16dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/language"
-                        android:textSize="16sp"
-                        android:textColor="?attr/Text_Color"/>
+                        android:textColor="?attr/Text_Color"
+                        android:textSize="16sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/change_language_desc"
+                        android:textColor="?attr/Text_subtitle_color"
                         android:textSize="11sp"
-                        tools:ignore="SmallSp"
-                        android:textColor="?attr/Text_subtitle_color"/>
+                        tools:ignore="SmallSp" />
                 </LinearLayout>
-
 
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_chevron_right_24" />
+                    android:src="@drawable/ic_baseline_chevron_right_24"
+                    android:contentDescription="@string/todo" />
 
             </LinearLayout>
 
@@ -93,27 +95,29 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="16dp">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/theme"
-                    android:textSize="16sp"
-                    android:textColor="?attr/Text_Color"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/change_the_theme_in_the_application"
-                    android:textSize="11sp"
-                    tools:ignore="SmallSp"
-                    android:textColor="?attr/Text_subtitle_color"/>
-            </LinearLayout>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/theme"
+                        android:textColor="?attr/Text_Color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/change_the_theme_in_the_application"
+                        android:textColor="?attr/Text_subtitle_color"
+                        android:textSize="11sp"
+                        tools:ignore="SmallSp" />
+                </LinearLayout>
 
 
                 <Switch

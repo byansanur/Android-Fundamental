@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class SaveDataTheme(context: Context?) {
-//    private val sharedPreferencesVal: SharedPreferences = context.getSharePreference("Action", Context.MODE_PRIVATE)
     private var sharedPreferencesVar:  SharedPreferences = context!!.getSharedPreferences("file", Context.MODE_PRIVATE)
 
 
@@ -15,8 +14,7 @@ class SaveDataTheme(context: Context?) {
     }
 
     fun loadModeState(): Boolean? {
-        val state = sharedPreferencesVar.getBoolean("Dark", false)
-        return state
+        return sharedPreferencesVar.getBoolean("Dark", false)
     }
 
 }

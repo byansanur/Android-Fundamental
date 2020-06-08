@@ -9,7 +9,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.byandev.submission2uiux.SearchApplication
-import com.byandev.submission2uiux.data.model.FollowersSource
+import com.byandev.submission2uiux.data.model.FollowingSource
 import com.byandev.submission2uiux.data.repo.FollowFollowListRepository
 import com.byandev.submission2uiux.utils.Constants
 import com.byandev.submission2uiux.utils.Resource
@@ -17,61 +17,57 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-class FollowFollowViewModel(
+@Suppress("DEPRECATION")
+class FollowingViewModel(
     app: Application,
-    val followFollowListRepository: FollowFollowListRepository
+    private val followFollowListRepository: FollowFollowListRepository
 ) : AndroidViewModel(app) {
 
+    val userFollowing: MutableLiveData<Resource<FollowingSource>> = MutableLiveData()
+    private var userFollowingResponse: FollowingSource? = null
     var pagination = Constants.QUERY_PAGE_SIZE
 
-    val userFollowers: MutableLiveData<Resource<FollowersSource>> = MutableLiveData()
-    var userFollowersResponse: FollowersSource? = null
-
-
-
-    fun followersFetch(userName: String) = viewModelScope.launch {
-        safeFollowersCall(userName)
+    fun followingFetch(userName: String) = viewModelScope.launch {
+        safeFollowingCall(userName)
     }
 
-    private fun handleFollowersResponse(response: Response<FollowersSource>) : Resource<FollowersSource>? {
+    private fun handleFollowingResponse(response: Response<FollowingSource>) : Resource<FollowingSource>? {
 
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 pagination++
-                if (userFollowersResponse == null) {
-                    userFollowersResponse = resultResponse
+                if (userFollowingResponse == null) {
+                    userFollowingResponse = resultResponse
                 }else {
 
                     for (i in 0 until resultResponse.size) {
-                        val foll = userFollowersResponse
-                        val follw = resultResponse[i]
-                        foll?.contains(follw)
+                        val foll = userFollowingResponse
+                        val follow = resultResponse[i]
+                        foll?.contains(follow)
                     }
-                    userFollowers.postValue(Resource.Loading())
+                    userFollowing.postValue(Resource.Loading())
                 }
-                return Resource.Success(userFollowersResponse ?: resultResponse)
+                return Resource.Success(userFollowingResponse ?: resultResponse)
             }
         }
 
         return Resource.Error(response.message())
     }
 
-
-
-    private suspend fun safeFollowersCall(userName: String) {
-        userFollowers.postValue(Resource.Loading())
+    private suspend fun safeFollowingCall(userName: String) {
+        userFollowing.postValue(Resource.Loading())
         try {
             if (hasInternetConnection()) {
                 val response =
-                    followFollowListRepository.userFollowers(userName, pagination)
-                userFollowers.postValue(handleFollowersResponse(response))
+                    followFollowListRepository.userFollowing(userName, pagination)
+                userFollowing.postValue(handleFollowingResponse(response))
             } else {
-                userFollowers.postValue(Resource.Error("No internet connection"))
+                userFollowing.postValue(Resource.Error("No internet connection"))
             }
         } catch (t: Throwable) {
             when (t) {
-                is IOException -> userFollowers.postValue(Resource.Error("Network Failure"))
-                else -> userFollowers.postValue(Resource.Error("Conversion Error"))
+                is IOException -> userFollowing.postValue(Resource.Error("Network Failure"))
+                else -> userFollowing.postValue(Resource.Error("Conversion Error"))
             }
         }
     }
@@ -101,5 +97,4 @@ class FollowFollowViewModel(
         }
         return false
     }
-
 }

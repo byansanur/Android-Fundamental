@@ -4,16 +4,15 @@
     android:layout_height="350dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:elevation="2dp"
-    android:background="@drawable/bg_bs"
+    android:background="?attr/backgroundColor"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="com.google.android.material.BottomSheet">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/bg_bs"
-        android:layout_gravity="center_horizontal"
+        android:background="?attr/backgroundColor"
         android:padding="16dp">
 
         <ImageView
@@ -21,7 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:src="@drawable/ic_baseline_close_24"/>
+            android:src="@drawable/ic_baseline_close_24"
+            android:contentDescription="@string/todo" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgBsUser"
@@ -34,14 +34,100 @@
         <TextView
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             tools:text="@string/username"
             android:textSize="18sp"
             android:maxLines="1"
+            android:textColor="?attr/Text_Color"
             tools:ignore="NestedWeights" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textSize="15sp"
+            android:textStyle="italic|normal"
+            android:textColor="?attr/Text_Color"
+            android:maxLines="1"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvCountFollowers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/_0"
+                    android:textSize="16sp"
+                    android:textColor="?attr/Text_Color"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/follower"
+                    android:textSize="14sp"
+                    android:textColor="?attr/Text_Color"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvCountFollowing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/_0"
+                    android:textSize="16sp"
+                    android:textColor="?attr/Text_Color"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/following"
+                    android:textSize="14sp"
+                    android:textColor="?attr/Text_Color"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvCountRepository"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/_0"
+                    android:textSize="16sp"
+                    android:textColor="?attr/Text_Color"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/repository"
+                    android:textSize="14sp"
+                    android:textColor="?attr/Text_Color"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnCheckUsers"
@@ -49,11 +135,13 @@
             android:layout_height="wrap_content"
             android:text="@string/check_user"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:layout_gravity="center"
             android:background="@drawable/background_item"
             android:textColor="@android:color/white"
             android:textAllCaps="false"/>
+
+
 
     </LinearLayout>
 

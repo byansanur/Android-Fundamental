@@ -9,24 +9,28 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.model.FollowingSource
+import com.byandev.submission2uiux.data.model.FollowingSourceItem
 import kotlinx.android.synthetic.main.item_list_users.view.*
 
 class FollowingAdapter : RecyclerView.Adapter<FollowingAdapter.Holder>() {
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    private val differCallback = object : DiffUtil.ItemCallback<FollowingSource> () {
-        override fun areItemsTheSame(oldItem: FollowingSource, newItem: FollowingSource): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<FollowingSourceItem> () {
+        override fun areItemsTheSame(
+            oldItem: FollowingSourceItem,
+            newItem: FollowingSourceItem
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: FollowingSource,
-            newItem: FollowingSource
+            oldItem: FollowingSourceItem,
+            newItem: FollowingSourceItem
         ): Boolean {
             return oldItem == newItem
         }
+
 
     }
     val differ = AsyncListDiffer(this, differCallback)

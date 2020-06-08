@@ -32,6 +32,12 @@
     <string name="theme">Theme</string>
     <string name="language">Language</string>
     <string name="change_language_desc">Change the language of this application through the phone settings</string>
-    <string name="change_the_theme_in_the_application">Change the theme in the application</string>
+    <string name="change_the_theme_in_the_application">Change the theme in the application with Light / Dark mode</string>
+    <string name="no_followers">This user has no followers yet.</string>
+    <string name="no_follow_desc">Learn more about being social on GitHub.</string>
+    <string name="no_followings">This user is not following anyone.</string>
+    <string name="bio">bio</string>
+    <string name="no_data_searching">We couldn\'t find any users matching</string>
+    <string name="no_data_searching_desc">Please enter the appropriate keywords</string>
 
 </resources>

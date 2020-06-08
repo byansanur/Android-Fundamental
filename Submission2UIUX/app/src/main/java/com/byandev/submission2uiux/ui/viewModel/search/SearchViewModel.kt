@@ -18,30 +18,30 @@ import retrofit2.Response
 import java.io.IOException
 
 
-class SearchFragmentViewModel (
+@Suppress("DEPRECATION")
+class SearchViewModel (
     app: Application,
-    val searchUsersRespository: SearchListRepository
+    private val searchUsersRepository: SearchListRepository
 ) : AndroidViewModel(app) {
 
-    val searchUsers: MutableLiveData<Resource<SearchModel>> = MutableLiveData()
-    var searchUsersPage = QUERY_PAGE_SIZE
-    var searchUsersResponse: SearchModel? = null
+    internal val searchUsers: MutableLiveData<Resource<SearchModel>> = MutableLiveData()
+    internal var searchUsersPage = QUERY_PAGE_SIZE
+    private var searchUsersResponse: SearchModel? = null
 
     fun searchFetch(searchQuery: String) = viewModelScope.launch {
         safeSearchNewsCall(searchQuery)
     }
 
-    private fun handlesearchUsersResponse(response: Response<SearchModel>) : Resource<SearchModel> {
+    private fun handlerUsersResponse(response: Response<SearchModel>) : Resource<SearchModel> {
         if(response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 searchUsersPage++
                 if(searchUsersResponse == null) {
                     searchUsersResponse = resultResponse
                 } else {
-                    for (i in 0 until resultResponse.items.size) {
+                    for (element in resultResponse.items) {
                         val oldUsers = searchUsersResponse?.items
-                        val newUsers = resultResponse.items[i]
-                        oldUsers?.contains(newUsers)
+                        oldUsers?.contains(element)
                     }
                     searchUsers.postValue(Resource.Loading())
                 }
@@ -55,8 +55,8 @@ class SearchFragmentViewModel (
         searchUsers.postValue(Resource.Loading())
         try {
             if(hasInternetConnection()) {
-                val response = searchUsersRespository.searchUser(searchQuery, searchUsersPage)
-                searchUsers.postValue(handlesearchUsersResponse(response))
+                val response = searchUsersRepository.searchUser(searchQuery, searchUsersPage)
+                searchUsers.postValue(handlerUsersResponse(response))
             } else {
                 searchUsers.postValue(Resource.Error("No internet connection"))
             }

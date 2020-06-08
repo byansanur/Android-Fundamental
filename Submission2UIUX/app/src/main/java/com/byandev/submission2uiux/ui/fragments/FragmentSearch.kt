@@ -19,7 +19,7 @@ import com.byandev.submission2uiux.data.SaveDataTheme
 import com.byandev.submission2uiux.ui.MainActivity
 import com.byandev.submission2uiux.ui.SettingsActivity
 import com.byandev.submission2uiux.ui.adapter.SearchAdapter
-import com.byandev.submission2uiux.ui.viewModel.search.SearchFragmentViewModel
+import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModel
 import com.byandev.submission2uiux.utils.Constants.Companion.QUERY_PAGE_SIZE
 import com.byandev.submission2uiux.utils.Constants.Companion.SEARCH_TIME_DELAY
 import com.byandev.submission2uiux.utils.Resource
@@ -32,9 +32,9 @@ import kotlinx.coroutines.launch
 
 class FragmentSearch : Fragment() {
 
-    private lateinit var viewModel: SearchFragmentViewModel
+    private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter: SearchAdapter
-    lateinit var saveDataTheme: SaveDataTheme
+    private lateinit var saveDataTheme: SaveDataTheme
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -87,11 +87,17 @@ class FragmentSearch : Fragment() {
                     layoutDataKosong.visibility = View.GONE
                     sweepRefresh.isRefreshing = false
                     it.data?.let {
-                        searchAdapter.differ.submitList(it.items.toList())
-                        val totalPage = it.total_count!! / QUERY_PAGE_SIZE + 2
-                        isLastPage = viewModel.searchUsersPage == totalPage
-                        if (isLastPage) {
-                            rvListUser.setPadding(0,10,0,0)
+                        if (it.items.isNullOrEmpty()) {
+                            layoutDataKosong.visibility = View.VISIBLE
+                            tvNoData.text = getString(R.string.no_data_searching)
+                            tvNoDataDesc.text = getString(R.string.no_data_searching_desc)
+                        } else {
+                            searchAdapter.differ.submitList(it.items.toList())
+                            val totalPage = it.total_count!! / QUERY_PAGE_SIZE + 2
+                            isLastPage = viewModel.searchUsersPage == totalPage
+                            if (isLastPage) {
+                                rvListUser.setPadding(0,10,0,0)
+                            }
                         }
                     }
                 }
@@ -156,9 +162,9 @@ class FragmentSearch : Fragment() {
             val isAtLastItem = firsVisibleItemPosition + visibleItemCount >= totalItemCount
             val isNotAtBeginning = firsVisibleItemPosition >= 0
             val isTotalMoreThanVisible = totalItemCount >= QUERY_PAGE_SIZE
-            val shouldPaginante = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
-            if (shouldPaginante) {
+            if (shouldPaginate) {
                 viewModel.searchFetch(etSearch.text.toString())
                 isScrolling = false
             }

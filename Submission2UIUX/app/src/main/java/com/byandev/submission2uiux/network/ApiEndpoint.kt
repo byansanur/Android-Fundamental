@@ -31,6 +31,6 @@ interface ApiEndpoint {
     suspend fun following(
         @Path("username") username: String,
         @Query("page") page: Int = 1
-    ): Response<List<FollowingSource>>
+    ): Response<FollowingSource>
 
 }

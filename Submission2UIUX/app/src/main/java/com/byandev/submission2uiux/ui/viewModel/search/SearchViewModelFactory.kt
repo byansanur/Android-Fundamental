@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.byandev.submission2uiux.data.repo.SearchListRepository
 
 @Suppress("UNCHECKED_CAST")
-class SearchViewModelProviderFactory(
-        val app: Application,
-        val searchRepository: SearchListRepository
+class SearchViewModelFactory(
+    val app: Application,
+    private val searchRepository: SearchListRepository
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return SearchFragmentViewModel(
+        return SearchViewModel(
             app,
             searchRepository
         ) as T

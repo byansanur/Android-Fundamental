@@ -14,9 +14,9 @@ import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.data.SaveDataTheme
 import com.byandev.submission2uiux.ui.DetailActivity
 import com.byandev.submission2uiux.ui.adapter.FollowersAdapter
-import com.byandev.submission2uiux.ui.viewModel.followFollow.FollowFollowViewModel
+import com.byandev.submission2uiux.ui.viewModel.followFollow.FollowersViewModel
+import com.byandev.submission2uiux.utils.Constants.Companion.DETAIL_FOLLOW_DELAY
 import com.byandev.submission2uiux.utils.Constants.Companion.QUERY_PAGE_SIZE
-import com.byandev.submission2uiux.utils.Constants.Companion.SEARCH_TIME_DELAY
 import com.byandev.submission2uiux.utils.Resource
 import kotlinx.android.synthetic.main.fragment_follow.*
 import kotlinx.coroutines.Job
@@ -27,10 +27,12 @@ import kotlinx.coroutines.launch
 class FragmentFollowers : Fragment() {
 
 
-    private lateinit var viewModel: FollowFollowViewModel
+    private lateinit var viewModel: FollowersViewModel
     private lateinit var followersAdapter: FollowersAdapter
-
-    lateinit var saveDataTheme: SaveDataTheme
+    private lateinit var saveDataTheme: SaveDataTheme
+    private var isLoading = false
+    private var isLastPage = false
+    private var isScrolling = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,9 +52,7 @@ class FragmentFollowers : Fragment() {
         }
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        viewModel = (activity as DetailActivity).viewModelFollow
+        viewModel = (activity as DetailActivity).viewModelFollowers
 
         setupRv()
 
@@ -63,18 +63,24 @@ class FragmentFollowers : Fragment() {
             prepareData()
         }
 
-        viewModel.userFollowers.observe(viewLifecycleOwner, Observer {
+        viewModel.userFollowers.observe(viewLifecycleOwner, Observer { it ->
             when(it) {
                 is Resource.Success -> {
                     showLoading(false)
                     layoutNoData.visibility = View.GONE
                     sweep.isRefreshing = false
                     it.data?.let {
-                        followersAdapter.differ.submitList(it)
-                        val totalPage = QUERY_PAGE_SIZE + 2
-                        isLastPage = viewModel.pagination == totalPage
-                        if (isLastPage) {
-                            rvListFollow.setPadding(0,10,0,0)
+                        if (it.isNullOrEmpty()) {
+                            layoutNoData.visibility = View.VISIBLE
+                            tvFollowNoData.text = getString(R.string.no_followers)
+                            tvFollowNoDataDesc.text = getString(R.string.no_follow_desc)
+                        } else {
+                            followersAdapter.differ.submitList(it.toList())
+                            val totalPage = QUERY_PAGE_SIZE + 2
+                            isLastPage = viewModel.pagination == totalPage
+                            if (isLastPage) {
+                                rvListFollow.setPadding(0,10,0,0)
+                            }
                         }
                     }
                 }
@@ -103,11 +109,11 @@ class FragmentFollowers : Fragment() {
         val username = (activity as DetailActivity).args
         val useName = username.search.login
 
-        var job: Job? = null
+        val job: Job? = null
         if (useName != null) {
             job?.cancel()
-            job = MainScope().launch {
-                delay(SEARCH_TIME_DELAY)
+            MainScope().launch {
+                delay(DETAIL_FOLLOW_DELAY)
                 viewModel.followersFetch(useName)
                 followersAdapter.notifyDataSetChanged()
                 layoutNoData.visibility = View.GONE
@@ -116,9 +122,7 @@ class FragmentFollowers : Fragment() {
 
     }
 
-    var isLoading = false
-    var isLastPage = false
-    var isScrolling = false
+
 
     private val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -133,11 +137,10 @@ class FragmentFollowers : Fragment() {
             val isAtLastItem = firsVisibleItemPosition + visibleItemCount >= totalItemCount
             val isNotAtBeginning = firsVisibleItemPosition >= 0
             val isTotalMoreThanVisible = totalItemCount >= QUERY_PAGE_SIZE
-            val shouldPaginante = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
                     isTotalMoreThanVisible && isScrolling
-            if (shouldPaginante) {
+            if (shouldPaginate) {
                 val username = (activity as DetailActivity).args
-//                val uname = username.search.login
                 viewModel.followersFetch(username.search.login.toString())
                 isScrolling = false
             }

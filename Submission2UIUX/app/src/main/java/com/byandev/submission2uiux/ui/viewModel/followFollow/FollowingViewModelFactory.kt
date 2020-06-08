@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.byandev.submission2uiux.data.repo.FollowFollowListRepository
 
 @Suppress("UNCHECKED_CAST")
-class FollowFollowViewModelProviderFactory(
-        val app: Application,
-        val followFollowListRepository: FollowFollowListRepository
+class FollowingViewModelFactory(
+    val app: Application,
+    private val followFollowListRepository: FollowFollowListRepository
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return FollowFollowViewModel(
+        return FollowingViewModel(
             app,
             followFollowListRepository
         ) as T

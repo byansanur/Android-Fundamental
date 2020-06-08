@@ -10,14 +10,12 @@ import com.byandev.submission2uiux.ui.fragments.FragmentFollowing
 
 class ViewPagerAdapter (private val context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val TAB_TITLE = intArrayOf(
+    private val initTitle = intArrayOf(
         R.string.tab_followers,
         R.string.tab_following
     )
 
     override fun getItem(position: Int): Fragment {
-//        val fragment = FragmentFollowers.newInstance(position + 1)
-//        return fragment
         var fragment: Fragment? = null
         when(position) {
             0 -> fragment = FragmentFollowers()
@@ -27,7 +25,7 @@ class ViewPagerAdapter (private val context: Context, fm: FragmentManager) : Fra
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TAB_TITLE[position])
+        return context.resources.getString(initTitle[position])
     }
 
     override fun getCount(): Int = 2

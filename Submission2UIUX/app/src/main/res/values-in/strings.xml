@@ -33,5 +33,11 @@
     <string name="theme">Tema</string>
     <string name="language">Bahasa</string>
     <string name="change_language_desc">Ubah bahasa aplikasi ini melalui pengaturan telepon</string>
-    <string name="change_the_theme_in_the_application">Ubah tema dalam aplikasi</string>
+    <string name="change_the_theme_in_the_application">Ubah tema dalam aplikasi dengan mode Terang / Gelap</string>
+    <string name="no_followers">Pengguna ini belum memiliki pengikut.</string>
+    <string name="no_follow_desc">Pelajari lebih lanjut tentang sosial di GitHub..</string>
+    <string name="no_followings">Pengguna ini tidak mengikuti siapa pun.</string>
+    <string name="bio">bio</string>
+    <string name="no_data_searching">Kami tidak dapat menemukan pengguna yang cocok</string>
+    <string name="no_data_searching_desc">Silahkan masukan kata kunci yang sesuai</string>
 </resources>
