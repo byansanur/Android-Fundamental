@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Submission2UIUX</string>
-    <string name="personal_access_tokens">2a40a56f2a7d5cd8563fabda6fc448f16d9aee42</string>
     <string name="search">Cari</string>
     <string name="tidak_ada_data">Tidak ada data</string>
 
-    <string name="nama_lengkap">Nama lengkap</string>
     <string name="location">Lokasi</string>
-    <string name="selengknya">Selengknya</string>
     <string name="_0">0</string>
     <string name="follower">Pengikut</string>
     <string name="repository">Gudang</string>
@@ -15,9 +12,8 @@
     <string name="settings">Pengaturan</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Halo fragmen kosong</string>
     <string name="todo">MELAKUKAN</string>
-    <string name="lakukan_pencarian_untuk_menampilkan_data">Lakukan pencarian untuk menampilkan data</string>
+    <string name="do_action_for_search">Lakukan pencarian untuk menampilkan data</string>
 
     <string name="tab_followers">Pengikut</string>
     <string name="tab_following">Mengikuti</string>
@@ -25,7 +21,6 @@
     <string name="no_internet_title">Gagal Menyambung</string>
     <string name="no_internet_description">silakan periksa koneksi Anda dan coba lagi</string>
     <string name="username">Username</string>
-    <string name="company">Perusahaan</string>
     <string name="check_user">Cek user</string>
     <string name="detail_user">Detail User</string>
     <string name="setting">Pengaturan</string>
@@ -37,7 +32,6 @@
     <string name="no_followers">Pengguna ini belum memiliki pengikut.</string>
     <string name="no_follow_desc">Pelajari lebih lanjut tentang sosial di GitHub..</string>
     <string name="no_followings">Pengguna ini tidak mengikuti siapa pun.</string>
-    <string name="bio">bio</string>
     <string name="no_data_searching">Kami tidak dapat menemukan pengguna yang cocok</string>
     <string name="no_data_searching_desc">Silahkan masukan kata kunci yang sesuai</string>
 </resources>

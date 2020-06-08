@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Submission2UIUX</string>
-    <string name="personal_access_tokens">2a40a56f2a7d5cd8563fabda6fc448f16d9aee42</string>
     <string name="search">Search</string>
     <string name="tidak_ada_data">There is no data</string>
 
-    <string name="nama_lengkap">Full name</string>
     <string name="location">Location</string>
-    <string name="selengknya">Read more</string>
     <string name="_0">0</string>
     <string name="follower">Follower</string>
     <string name="repository">Repository</string>
@@ -15,9 +12,8 @@
     <string name="settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
-    <string name="lakukan_pencarian_untuk_menampilkan_data">Do a search to display data</string>
+    <string name="do_action_for_search">Do a search to display data</string>
 
     <string name="tab_followers">Followers</string>
     <string name="tab_following">Following</string>
@@ -25,7 +21,6 @@
     <string name="no_internet_title">Failed to Connect</string>
     <string name="no_internet_description">Please check your connection and try again</string>
     <string name="username">Username</string>
-    <string name="company">Company</string>
     <string name="check_user">Check user</string>
     <string name="detail_user">Detail User</string>
     <string name="setting">Setting</string>
@@ -37,7 +32,6 @@
     <string name="no_followers">This user has no followers yet.</string>
     <string name="no_follow_desc">Learn more about being social on GitHub.</string>
     <string name="no_followings">This user is not following anyone.</string>
-    <string name="bio">bio</string>
     <string name="no_data_searching">We couldn\'t find any users matching</string>
     <string name="no_data_searching_desc">Please enter the appropriate keywords</string>
 

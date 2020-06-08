@@ -76,7 +76,6 @@
             android:visibility="gone">
 
             <ImageView
-                android:id="@+id/imgNoData"
                 android:layout_width="200dp"
                 android:layout_height="120dp"
                 android:contentDescription="@string/todo"
@@ -95,19 +94,14 @@
                 android:id="@+id/tvNoDataDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/lakukan_pencarian_untuk_menampilkan_data"
+                android:text="@string/do_action_for_search"
                 android:textAlignment="center"
                 android:textColor="@color/text"
                 android:textSize="14sp"
                 android:textStyle="normal" />
         </LinearLayout>
 
-        <ProgressBar
-            android:id="@+id/pbLoading"
-            android:visibility="gone"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fbSettingsTranslate"

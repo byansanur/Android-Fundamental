@@ -11,7 +11,6 @@ import com.byandev.submission2uiux.data.SaveDataTheme
 import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModel
 import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModelFactory
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             )
         viewModel = ViewModelProvider(this, searchViewModelProviderFactory).get(SearchViewModel::class.java)
 
-        searchNavHostFragment.findNavController()
+        supportFragmentManager.findFragmentById(R.id.searchNavHostFragment)?.findNavController()
     }
 
     override fun onStart() {

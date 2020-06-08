@@ -66,7 +66,7 @@ class FragmentFollowers : Fragment() {
         viewModel.userFollowers.observe(viewLifecycleOwner, Observer { it ->
             when(it) {
                 is Resource.Success -> {
-                    showLoading(false)
+
                     layoutNoData.visibility = View.GONE
                     sweep.isRefreshing = false
                     it.data?.let {
@@ -86,7 +86,7 @@ class FragmentFollowers : Fragment() {
                 }
                 is Resource.Error -> {
                     it.message?.let { message ->
-                        showLoading(false)
+
                         layoutNoData.visibility = View.VISIBLE
                         tvFollowNoData.text = getString(R.string.no_internet_title)
                         tvFollowNoData.text = getString(R.string.no_internet_description)
@@ -95,7 +95,7 @@ class FragmentFollowers : Fragment() {
                     }
                 }
                 is Resource.Loading -> {
-                    showLoading(true)
+
                     sweep.isRefreshing = true
                 }
             }
@@ -167,8 +167,4 @@ class FragmentFollowers : Fragment() {
         }
     }
 
-    private fun showLoading(state: Boolean) {
-        if (state) pbLoad.visibility = View.VISIBLE
-        else pbLoad.visibility = View.GONE
-    }
 }

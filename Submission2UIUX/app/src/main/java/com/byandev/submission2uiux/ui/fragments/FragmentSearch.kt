@@ -83,7 +83,7 @@ class FragmentSearch : Fragment() {
         viewModel.searchUsers.observe(viewLifecycleOwner, Observer { it ->
             when(it) {
                 is Resource.Success -> {
-                    showLoading(false)
+
                     layoutDataKosong.visibility = View.GONE
                     sweepRefresh.isRefreshing = false
                     it.data?.let {
@@ -103,7 +103,7 @@ class FragmentSearch : Fragment() {
                 }
                 is Resource.Error -> {
                     it.message?.let { message ->
-                        showLoading(false)
+
                         layoutDataKosong.visibility = View.VISIBLE
                         tvNoData.text = getString(R.string.no_internet_title)
                         tvNoDataDesc.text = getString(R.string.no_internet_description)
@@ -112,7 +112,7 @@ class FragmentSearch : Fragment() {
                     }
                 }
                 is Resource.Loading -> {
-                    showLoading(true)
+
                     sweepRefresh.isRefreshing = true
                 }
             }
@@ -191,9 +191,6 @@ class FragmentSearch : Fragment() {
     }
 
 
-    private fun showLoading(state: Boolean) {
-        if (state) pbLoading.visibility = View.VISIBLE
-        else pbLoading.visibility = View.GONE
-    }
+
 }
 
