@@ -49,9 +49,3 @@ Fundamental Android for Learn everywhere
 
 
 
-Donate for your support. thanks
-<p>
-  <a href="https://www.paypal.me/byansamur">
-      <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="paypal">
-  </a>
-</p>
