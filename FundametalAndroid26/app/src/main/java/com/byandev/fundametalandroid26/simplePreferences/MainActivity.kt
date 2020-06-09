@@ -1,9 +1,10 @@
-package com.byandev.fundametalandroid26
+package com.byandev.fundametalandroid26.simplePreferences
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.byandev.fundametalandroid26.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -22,7 +23,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         supportActionBar?.title = "My User Preferences"
 
-        mUserPreferences = UserPreferences(this)
+        mUserPreferences =
+            UserPreferences(
+                this
+            )
         showExistingPreference()
 
         btn_save.setOnClickListener(this)
@@ -74,7 +78,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     intent.putExtra("USER", userModel)
                 }
             }
-            startActivityForResult(intent, REQUEST_CODE)
+            startActivityForResult(intent,
+                REQUEST_CODE
+            )
         }
     }
 

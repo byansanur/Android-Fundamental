@@ -1,4 +1,4 @@
-package com.byandev.fundametalandroid26
+package com.byandev.fundametalandroid26.simplePreferences
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.byandev.fundametalandroid26.R
 import kotlinx.android.synthetic.main.activity_add_user.*
 
 class AddUserActivity : AppCompatActivity(), View.OnClickListener {
@@ -73,27 +74,33 @@ class AddUserActivity : AppCompatActivity(), View.OnClickListener {
             val phoneNo = edt_phone.text.toString().trim()
             val isLoveMU = rg_love_mu.checkedRadioButtonId == R.id.rb_yes
             if (name.isEmpty()) {
-                edt_name.error = FIELD_REQUIRED
+                edt_name.error =
+                    FIELD_REQUIRED
                 return
             }
             if (email.isEmpty()) {
-                edt_email.error = FIELD_REQUIRED
+                edt_email.error =
+                    FIELD_REQUIRED
                 return
             }
             if (!isValidEmail(email)) {
-                edt_email.error = FIELD_IS_NOT_VALID
+                edt_email.error =
+                    FIELD_IS_NOT_VALID
                 return
             }
             if (age.isEmpty()) {
-                edt_age.error = FIELD_REQUIRED
+                edt_age.error =
+                    FIELD_REQUIRED
                 return
             }
             if (phoneNo.isEmpty()) {
-                edt_phone.error = FIELD_REQUIRED
+                edt_phone.error =
+                    FIELD_REQUIRED
                 return
             }
             if ((!TextUtils.isDigitsOnly(phoneNo))) {
-                edt_phone.error = FIELD_DIGIT_ONLY
+                edt_phone.error =
+                    FIELD_DIGIT_ONLY
                 return
             }
             saveUser(name, email, age, phoneNo, isLoveMU)
@@ -111,7 +118,10 @@ class AddUserActivity : AppCompatActivity(), View.OnClickListener {
         phoneNo: String,
         loveMU: Boolean
     ) {
-        val userPreferences = UserPreferences(this)
+        val userPreferences =
+            UserPreferences(
+                this
+            )
 
         userModel.name = name
         userModel.email = email

@@ -1,4 +1,4 @@
-package com.byandev.fundametalandroid26
+package com.byandev.fundametalandroid26.simplePreferences
 
 import android.content.Context
 

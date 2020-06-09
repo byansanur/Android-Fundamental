@@ -1,4 +1,4 @@
-package com.byandev.fundametalandroid26
+package com.byandev.fundametalandroid26.simplePreferences
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
