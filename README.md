@@ -28,8 +28,22 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid22 : [Work Manager](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid22)
 - FundametalAndroid23 : [Navigasi Task, Back Task](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid23)
 - FundametalAndroid24 : [View Model](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid24)
+- FundametalAndroid25 : [Local storage](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid25)
+- FundametalAndroid26 : SharedPreference *soon
+- FundametalAndroid27 : Sqlite (Query Optimization) *soon
+- FundametalAndroid28 : Content Provider *soon
+- FundametalAndroid29 : Android Widget *soon
+- FundametalAndroid30 : Android Notification *soon
+- FundametalAndroid31 : Firebase Cloud Messaging *soon
+- FundametalAndroid32 : WebView *soon
+- FundametalAndroid33 : SoundPool & Mediaplayer *soon
+- FundametalAndroid34 : Android KTX(kotlin) *soon
+---------- End of Materi ----------
+
+# Submission
 - Submission 1 : [GithubUser Local data](https://github.com/byansanur/Android-Fundamental/tree/master/Submission1GithubUser)
 - Submission 2 : [GithubUserSearch with GithubApi](https://github.com/byansanur/Android-Fundamental/tree/master/Submission2UIUX)
+- Submission 3 : *soon
 
 
 
