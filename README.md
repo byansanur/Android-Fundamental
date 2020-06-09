@@ -38,6 +38,8 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid32 : WebView *soon
 - FundametalAndroid33 : SoundPool & Mediaplayer *soon
 - FundametalAndroid34 : Android KTX(kotlin) *soon
+
+
 ---------- End of Materi ----------
 
 # Submission
@@ -47,6 +49,7 @@ Fundamental Android for Learn everywhere
 
 
 
+Donate for your support. thanks
 <p>
   <a href="https://www.paypal.me/byansamur">
       <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="paypal">
