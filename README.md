@@ -30,7 +30,7 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid24 : [View Model](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid24)
 - FundametalAndroid25 : [Local storage](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid25)
 - FundametalAndroid26 : [SharedPreference](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid26)
-- FundametalAndroid27 : Sqlite (Query Optimization) *soon
+- FundametalAndroid27 : [Sqlite (Query Optimization)](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid27)
 - FundametalAndroid28 : Content Provider *soon
 - FundametalAndroid29 : Android Widget *soon
 - FundametalAndroid30 : Android Notification *soon
