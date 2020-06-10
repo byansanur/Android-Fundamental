@@ -30,14 +30,13 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid24 : [View Model](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid24)
 - FundametalAndroid25 : [Local storage](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid25)
 - FundametalAndroid26 : [SharedPreference](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid26)
-- FundametalAndroid27 : [Sqlite (Query Optimization)](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid27)
-- FundametalAndroid28 : Content Provider *soon
-- FundametalAndroid29 : Android Widget *soon
-- FundametalAndroid30 : Android Notification *soon
-- FundametalAndroid31 : Firebase Cloud Messaging *soon
-- FundametalAndroid32 : WebView *soon
-- FundametalAndroid33 : SoundPool & Mediaplayer *soon
-- FundametalAndroid34 : Android KTX(kotlin) *soon
+- FundametalAndroid27 : [Sqlite (Query Optimization, Content Provider)](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid27)
+- FundametalAndroid28 : Android Widget *soon
+- FundametalAndroid29 : Android Notification *soon
+- FundametalAndroid30 : Firebase Cloud Messaging *soon
+- FundametalAndroid31 : WebView *soon
+- FundametalAndroid32 : SoundPool & Mediaplayer *soon
+- FundametalAndroid33 : Android KTX(kotlin) *soon
 
 
 ---------- End of Materi ----------
