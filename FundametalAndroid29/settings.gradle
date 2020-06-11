@@ -1,2 +1,3 @@
+include ':customnotif'
 include ':app'
 rootProject.name = "FundametalAndroid29"
