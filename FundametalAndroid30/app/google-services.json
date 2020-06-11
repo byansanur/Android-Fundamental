@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "325746342029",
+    "firebase_url": "https://fundametalandroid30.firebaseio.com",
+    "project_id": "fundametalandroid30",
+    "storage_bucket": "fundametalandroid30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325746342029:android:608bf2398d64db1310cac4",
+        "android_client_info": {
+          "package_name": "com.byandev.fundametalandroid30"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325746342029-006n682eu6ljfdk5j7ufgsouh44olbbl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsCAaGxtW705GVMkipmbS0mydWBoj0C6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325746342029-006n682eu6ljfdk5j7ufgsouh44olbbl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
