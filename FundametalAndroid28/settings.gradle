@@ -1,2 +1,3 @@
+include ':stackviewwidget'
 include ':app'
 rootProject.name = "FundametalAndroid28"
