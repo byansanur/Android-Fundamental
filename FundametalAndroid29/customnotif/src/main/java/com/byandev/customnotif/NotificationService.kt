@@ -19,6 +19,11 @@ class NotificationService : IntentService("NotificationService") {
         const val CHANNEL_ID = "channel_01"
         val CHANNEL_NAME: CharSequence = "byandev channel"
 
+        /*
+        Untuk membaca inputan dari direct message kita bisa menggunakan remoteinput
+        dengan kode seperti di bawah. Kemudian untuk menerimanya,
+        kita menggunakan method onReceive di kelas NotificationBroadcastReceiver.
+         */
         fun getReplyMessage(intent: Intent): CharSequence? {
             val remoteInput = RemoteInput.getResultsFromIntent(intent)
             return remoteInput?.getCharSequence(KEY_REPLY)
@@ -40,10 +45,15 @@ class NotificationService : IntentService("NotificationService") {
         mMessageId = 123
 
         val replyLabel = getString(R.string.notif_action_reply)
+
+        //RemoteInput membawa informasi seperti label, action, dan key yang digunakan
+        //untuk mengambil input dari direct reply.
         val remoteInput = RemoteInput.Builder(KEY_REPLY)
             .setLabel(replyLabel)
             .build()
 
+        // Berfungsi untuk menghubungkan action dan remote input.
+        // Kita memerlukan sebuah ikon, label, dan pending intent.
         val replyAction = NotificationCompat.Action
             .Builder(R.drawable.ic_baseline_reply_24, replyLabel, getReplyPendingIntent())
             .addRemoteInput(remoteInput)
@@ -88,6 +98,15 @@ class NotificationService : IntentService("NotificationService") {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             PendingIntent.getActivity(this, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
+        /*
+        Kita diharuskan memilih pending intent yang sesuai,
+        karena setiap versi Android memerlukan kebutuhan pending intent yang berbeda.
+        Pada kode di atas, terdapat 2 kondisi yaitu untuk Android N dan untuk Android versi sebelumnya.
+        Yang berbeda dari kedua versi di atas adalah
+        di dalam Android N kita bisa menampilkan direct reply di notifikasinya.
+        Sedangkan untuk versi sebelumnya,
+        kita perlu membuka ReplyActivity agar pengguna bisa menindaklanjuti notifikasi yang masuk.
+         */
     }
 
 

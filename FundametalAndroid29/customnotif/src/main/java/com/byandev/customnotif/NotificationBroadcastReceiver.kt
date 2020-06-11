@@ -37,7 +37,7 @@ class NotificationBroadcastReceiver : BroadcastReceiver() {
             val message = NotificationService.getReplyMessage(intent)
             val messageId = intent.getIntExtra(KEY_MESSAGE_ID, 0)
 
-            Toast.makeText(context, "Message ID: $messageId\\nMessage: $message", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Message ID: $messageId\nMessage: $message", Toast.LENGTH_SHORT).show()
 
             val notifyId = intent.getIntExtra(KEY_NOTOFICATION_ID, 1)
             updateNotification(context, notifyId)
@@ -68,5 +68,10 @@ class NotificationBroadcastReceiver : BroadcastReceiver() {
         val notification = mBuilder.build()
 
         mNotificationManager.notify(notifyId, notification)
+
+        /*
+        Anda tak perlu menambahkan remote input secara terus menerus.
+        Anda hanya perlu memperbarui notifikasi dengan notification manager seperti kode di atas.
+         */
     }
 }
