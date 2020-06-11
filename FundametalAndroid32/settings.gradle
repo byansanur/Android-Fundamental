@@ -1,2 +1,3 @@
+include ':soundpoolmediaplayer'
 include ':app'
 rootProject.name = "FundametalAndroid32"
