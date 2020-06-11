@@ -35,8 +35,8 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid29 : [Android Notification](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid29)
 - FundametalAndroid30 : [Firebase Cloud Messaging](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid30)
 - FundametalAndroid31 : [WebView](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid31)
-- FundametalAndroid32 : SoundPool & Mediaplayer *soon
-- FundametalAndroid33 : Android KTX(kotlin) *soon
+- FundametalAndroid32 : [SoundPool & Mediaplayer](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid32)
+- FundametalAndroid33 : [Android KTX(kotlin) *soon](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid33)
 
 
 ---------- End of Materi ----------
