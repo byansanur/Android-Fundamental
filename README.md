@@ -32,7 +32,7 @@ Fundamental Android for Learn everywhere
 - FundametalAndroid26 : [SharedPreference](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid26)
 - FundametalAndroid27 : [Sqlite (Query Optimization, Content Provider)](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid27)
 - FundametalAndroid28 : [Android Widget](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid28)
-- FundametalAndroid29 : Android Notification *soon
+- FundametalAndroid29 : [Android Notification](https://github.com/byansanur/Android-Fundamental/tree/master/FundametalAndroid29)
 - FundametalAndroid30 : Firebase Cloud Messaging *soon
 - FundametalAndroid31 : WebView *soon
 - FundametalAndroid32 : SoundPool & Mediaplayer *soon
