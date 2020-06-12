@@ -44,7 +44,7 @@ Fundamental Android for Learn everywhere
 # Submission
 - Submission 1 : [GithubUser Local data](https://github.com/byansanur/Android-Fundamental/tree/master/Submission1GithubUser)
 - Submission 2 : [GithubUserSearch with GithubApi](https://github.com/byansanur/Android-Fundamental/tree/master/Submission2UIUX)
-- Submission 3 : [GithubUserSearch with GithubApi and Room databases](https://github.com/byansanur/Android-Fundamental/tree/master/Submission2UIUXApi)
+- Submission 3 : [GithubUserSearch with GithubApi and Room databases](https://github.com/byansanur/Android-Fundamental/tree/master/Submission3UIUXApi)
 
 
 
