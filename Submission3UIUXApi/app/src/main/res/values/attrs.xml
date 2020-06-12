@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- -->
+    <declare-styleable name="a1">
+        <attr name="backgroundColor" format="color"/>
+        <attr name="Icon_color" format="color"/>
+        <attr name="Text_Color" format="color"/>
+        <attr name="Text_subtitle_color" format="color"/>
+        <attr name="Button_Color" format="color"/>
+        <attr name="background_item_list" format="color"/>
+        <attr name="text_search" format="color"/>
+        <attr name="background_search" format="color"/>
+    </declare-styleable>
+
+</resources>
