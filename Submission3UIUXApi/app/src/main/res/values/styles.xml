@@ -10,7 +10,7 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
 
 
-        <item name="backgroundColor">@color/colorPrimary</item>
+        <item name="backgroundColor">@color/background</item>
         <item name="Icon_color">@color/colorAccent</item>
         <item name="Text_Color">@color/text</item>
         <item name="Text_subtitle_color">@color/textunselecttab</item>
