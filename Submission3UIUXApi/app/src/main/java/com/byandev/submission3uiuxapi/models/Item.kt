@@ -9,7 +9,7 @@ import java.io.Serializable
 )
 data class Item(
     @PrimaryKey(autoGenerate = true)
-    var _id: Int? = null,
+    var ids: Int? = null,
     var id: Int = 0,
     var login: String? = null,
     var avatar_url: String? = null,

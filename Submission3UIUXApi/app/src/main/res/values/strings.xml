@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Submission3UIUXApi</string>
+    <string name="todo">TODO</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="username">Username</string>
+    <string name="full_name">Full name</string>
+    <string name="bio">Bio</string>
+    <string name="company">Company</string>
+    <string name="location">Location</string>
+    <string name="blog">Blog</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
+    <string name="language">Language</string>
+    <string name="change_language_desc">Change the language of this application through the phone settings</string>
+    <string name="theme">Theme</string>
+    <string name="change_the_theme_in_the_application">Change the theme in the application with Light / Dark mode</string>
+    <string name="version">Version</string>
+    <string name="notification">Notification</string>
+    <string name="notification_setting_desc">Turn on notification settings to return to the application</string>
+    <string name="about">About</string>
+    <string name="about_desc">Here about the makers of this application</string>
 </resources>
