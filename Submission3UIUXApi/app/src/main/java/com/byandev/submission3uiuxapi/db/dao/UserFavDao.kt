@@ -8,29 +8,26 @@ import com.byandev.submission3uiuxapi.models.Item
 
 @Database(
     entities = [Item::class],
-    version = 1
+    version = 5
 )
+abstract class UserFavDao : RoomDatabase() {
 
-abstract class UserFavDb : RoomDatabase() {
-
-    abstract fun getItemDao(): UserDao
+    abstract fun getArticleDao() : UserFavoriteDao
 
     companion object {
         @Volatile
-        private var instance: UserFavDb? = null
+        private var instance : UserFavDao? = null
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
             instance ?: createDatabase(context).also { instance = it }
         }
 
-
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                UserFavDb::class.java,
-                "item_user_db.db"
+                UserFavDao::class.java,
+                "item_fav.db"
             ).build()
     }
-
 }

@@ -21,4 +21,6 @@
     <string name="notification_setting_desc">Turn on notification settings to return to the application</string>
     <string name="about">About</string>
     <string name="about_desc">Here about the makers of this application</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

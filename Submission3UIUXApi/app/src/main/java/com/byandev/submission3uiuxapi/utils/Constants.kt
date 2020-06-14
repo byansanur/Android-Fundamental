@@ -9,6 +9,6 @@ class Constants  {
         const val TOKEN = tokenKeys
         const val SEARCH_DELAY = 1000L
         const val DETAIL_FOLLOW_DELAY = 100L
-        const val PAGE_SIZE = 1
+        var PAGE_SIZE = 1
     }
 }
