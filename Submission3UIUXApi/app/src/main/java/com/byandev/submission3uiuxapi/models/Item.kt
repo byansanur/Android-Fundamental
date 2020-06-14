@@ -5,13 +5,13 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity(
-    tableName = "item_user"
+    tableName = "item"
 )
 data class Item(
     @PrimaryKey(autoGenerate = true)
-    var ids: Int? = null,
-    var id: Int = 0,
-    var login: String? = null,
-    var avatar_url: String? = null,
-    var type: String? = null
+    var UID: Int? = null,
+    var id: Int?,
+    var login: String?,
+    var avatar_url: String?,
+    var type: String?
 ) : Serializable

@@ -5,14 +5,14 @@ import androidx.room.*
 import com.byandev.submission3uiuxapi.models.Item
 
 @Dao
-interface UserDao {
+interface UserFavoriteDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(item: Item): Long
+    suspend fun inserts(item: Item): Long
 
-    @Query("SELECT * FROM item_user")
-    fun getAllUser(): LiveData<List<Item>>
+    @Query("SELECT * FROM item")
+    fun getAllFavoriteUsers(): LiveData<List<Item>>
 
     @Delete
-    suspend fun deleteItemUser(item: Item)
+    suspend fun deleteFavoriteUsers(article: Item)
 }
