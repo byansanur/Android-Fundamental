@@ -34,6 +34,7 @@
     <string name="no_data_searching">We couldn\'t find any users matching</string>
     <string name="no_data_searching_desc">Please enter the appropriate keywords</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notification">Notification</string>
+    <string name="activate_the_reminder_to_return_to_the_application">Activate the reminder to return to the application at 9:00 a.m.</string>
 
 </resources>
