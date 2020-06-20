@@ -65,6 +65,17 @@
                 app:tabTextAppearance="@style/AppTabTextAppearance"
                 app:tabBackground="@drawable/tab_background"/>
 
+            <ImageView
+                android:id="@+id/imgFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                app:tabMode="scrollable"
+                android:src="@drawable/ic_baseline_favorite_border_24"
+                android:contentDescription="@string/todo"/>
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -1,9 +1,7 @@
 package com.byandev.submission3uiuxapi.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AbsListView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
@@ -31,6 +29,30 @@ class FragmentSearch : Fragment() {
     private lateinit var viewModel: HomeViewModel
     private lateinit var searchAdapter: SearchAdapter
 
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setHasOptionsMenu(true)
+//    }
+//
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        inflater.inflate(R.menu.menus, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item.itemId) {
+//            R.id.menu_fav -> {
+//                Toast.makeText(context, "asdsa", Toast.LENGTH_SHORT).show()
+//            }
+//            R.id.menu_setting -> {
+//                Toast.makeText(context, "gfgf", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,6 +76,8 @@ class FragmentSearch : Fragment() {
                 bundle
             )
         }
+
+
 
         layoutNoData.visibility = View.VISIBLE
 

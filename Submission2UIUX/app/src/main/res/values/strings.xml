@@ -33,5 +33,7 @@
     <string name="no_followings">This user is not following anyone.</string>
     <string name="no_data_searching">We couldn\'t find any users matching</string>
     <string name="no_data_searching_desc">Please enter the appropriate keywords</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

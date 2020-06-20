@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.byandev.submission2uiux.data.model.FollowersSource
-import com.byandev.submission2uiux.data.repo.FollowFollowListRepository
+import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.utils.Constants
 import com.byandev.submission2uiux.utils.InternetConnection
 import com.byandev.submission2uiux.utils.Resource
@@ -16,7 +16,7 @@ import java.io.IOException
 @Suppress("DEPRECATION")
 class FollowersViewModel(
     app: Application,
-    private val followFollowListRepository: FollowFollowListRepository
+    private val searchUsersRepository: SearchListRepository
 ) : AndroidViewModel(app) {
 
     var pagination = Constants.QUERY_PAGE_SIZE
@@ -60,7 +60,7 @@ class FollowersViewModel(
             val internetConnection = InternetConnection(getApplication())
             if (internetConnection.hasInternetConnection()) {
                 val response =
-                    followFollowListRepository.userFollowers(userName, pagination)
+                    searchUsersRepository.userFollowers(userName, pagination)
                 userFollowers.postValue(handleFollowersResponse(response))
             } else {
                 userFollowers.postValue(Resource.Error("No internet connection"))

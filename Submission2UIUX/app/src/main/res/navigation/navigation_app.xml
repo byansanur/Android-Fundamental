@@ -10,6 +10,9 @@
         <action
             android:id="@+id/action_fragmentSearch_to_detailActivity"
             app:destination="@id/detailActivity" />
+        <action
+            android:id="@+id/action_fragmentSearch_to_favFragment"
+            app:destination="@id/favFragment" />
     </fragment>
     <activity
         android:id="@+id/detailActivity"
@@ -19,4 +22,12 @@
             android:name="search"
             app:argType="com.byandev.submission2uiux.data.model.Item" />
     </activity>
+    <fragment
+        android:id="@+id/favFragment"
+        android:name="com.byandev.submission2uiux.ui.fragments.FavFragment"
+        android:label="fragment_fav" >
+        <action
+            android:id="@+id/action_favFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
 </navigation>

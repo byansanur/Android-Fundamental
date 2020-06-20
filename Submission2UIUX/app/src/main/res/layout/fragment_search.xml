@@ -103,17 +103,17 @@
 
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fbSettingsTranslate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_settings_black_24dp"
-            android:layout_centerInParent="true"
-            app:backgroundTint="?attr/Icon_color"
-            android:layout_marginBottom="70dp"/>
+
+
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fbSettingsTranslate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:src="@drawable/ic_settings_black_24dp"-->
+<!--            app:backgroundTint="?attr/Icon_color"/>-->
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/sweepRefresh"
@@ -124,11 +124,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvListUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/item_list_users"/>
+
+                <com.getbase.floatingactionbutton.FloatingActionsMenu
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="70dp"
+                    app:fab_addButtonColorNormal="?attr/Icon_color"
+                    app:fab_labelStyle="@style/custom_fab">
+
+                    <com.getbase.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabSetting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:fab_colorNormal="@color/colorPrimary"
+                        app:fabSize="auto"
+                        app:fab_icon="@drawable/ic_settings_black_24dp"/>
+
+                    <com.getbase.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabFavorite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:fab_colorNormal="@color/colorPrimary"
+                        app:fabSize="auto"
+                        app:fab_icon="@drawable/ic_baseline_favorite_border_24"/>
+                </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
 
 
             </RelativeLayout>

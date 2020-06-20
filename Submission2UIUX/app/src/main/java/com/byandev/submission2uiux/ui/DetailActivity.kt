@@ -14,8 +14,8 @@ import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
 import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.data.SaveDataTheme
-import com.byandev.submission2uiux.data.repo.DetailUserRepository
-import com.byandev.submission2uiux.data.repo.FollowFollowListRepository
+import com.byandev.submission2uiux.data.dao.UserDatabase
+import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.ui.viewModel.detailUser.DetailUserViewModel
 import com.byandev.submission2uiux.ui.viewModel.detailUser.DetailUserViewModelFactory
 import com.byandev.submission2uiux.ui.viewModel.followFollow.FollowersViewModel
@@ -25,6 +25,7 @@ import com.byandev.submission2uiux.ui.viewModel.followFollow.FollowingViewModelF
 import com.byandev.submission2uiux.utils.Resource
 import com.byandev.submission2uiux.utils.ViewPagerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.bs_detail_user_layout.view.*
 import kotlinx.android.synthetic.main.detail_activity.*
 
@@ -53,7 +54,7 @@ class DetailActivity : AppCompatActivity() {
 
         val userName = args.search
 
-        val detailRepository = DetailUserRepository()
+        val detailRepository = SearchListRepository(UserDatabase(this))
         val detailUserViewModelProviderFactory =
             DetailUserViewModelFactory(
                 application,
@@ -66,7 +67,7 @@ class DetailActivity : AppCompatActivity() {
 
 
         // for follow
-        val followRepository = FollowFollowListRepository()
+        val followRepository = SearchListRepository(UserDatabase(this))
         val followersViewModelFactory =
             FollowersViewModelFactory(
                 application,
@@ -101,6 +102,11 @@ class DetailActivity : AppCompatActivity() {
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
         htab_viewpager.adapter = viewPagerAdapter
         htab_tabs.setupWithViewPager(htab_viewpager)
+
+        imgFav.setOnClickListener {
+            viewModel.saveUser(userName)
+            Snackbar.make(it, "User is save in local db", Snackbar.LENGTH_LONG).show()
+        }
 
     }
 
