@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/fragmentSearch"
         android:name="com.byandev.submission3uiuxapi.ui.fragment.FragmentSearch"
-        android:label="Fragment Search"
-        tools:layout="@layout/fragment_search">
+        android:label="Fragment Search">
         <action
             android:id="@+id/action_fragmentSearch_to_detailActivity"
             app:destination="@id/detailActivity" />
@@ -18,8 +17,7 @@
     <fragment
         android:id="@+id/fragmentFavorite"
         android:name="com.byandev.submission3uiuxapi.ui.fragment.FragmentFavorite"
-        android:label="Fragment Favorite"
-        tools:layout="@layout/fragment_favorite">
+        android:label="Fragment Favorite">
         <action
             android:id="@+id/action_fragmentFavorite_to_detailActivity"
             app:destination="@id/detailActivity" />
@@ -28,18 +26,12 @@
     <fragment
         android:id="@+id/fragmentSetting"
         android:name="com.byandev.submission3uiuxapi.ui.fragment.FragmentSetting"
-        android:label="Fragment Setting"
-        tools:layout="@layout/fragment_setting">
-        <action
-            android:id="@+id/action_fragmentSetting_to_detailActivity"
-            app:destination="@id/detailActivity" />
-    </fragment>
+        android:label="Fragment Setting"/>
 
     <activity
         android:id="@+id/detailActivity"
         android:name="com.byandev.submission3uiuxapi.ui.DetailActivity"
-        android:label="Detail Activity"
-        tools:layout="@layout/activity_detail">
+        android:label="Detail Activity">
         <argument
             android:name="search"
             app:argType="com.byandev.submission3uiuxapi.models.Item" />

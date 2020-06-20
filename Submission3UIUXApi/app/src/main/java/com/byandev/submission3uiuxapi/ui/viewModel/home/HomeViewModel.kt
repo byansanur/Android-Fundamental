@@ -27,16 +27,7 @@ class HomeViewModel(
         safeSearch(q)
     }
 
-    fun saveFavorite(item: Item) = viewModelScope.launch {
-        appRepository.insertFav(item)
-    }
 
-    fun getSaveFavorite() = appRepository.getSavedFav()
-
-
-    fun deleteFavorite(item: Item) = viewModelScope.launch {
-        appRepository.deleteFav(item)
-    }
 
     private fun handlerSearchResponse(response: Response<SearchModel>): Resource<SearchModel> {
         if (response.isSuccessful) {

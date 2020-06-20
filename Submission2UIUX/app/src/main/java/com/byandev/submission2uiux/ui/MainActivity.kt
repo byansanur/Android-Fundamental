@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.data.SaveDataTheme
+import com.byandev.submission2uiux.data.dao.UserDatabase
 import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModel
 import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModelFactory
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val searchListRepository = SearchListRepository()
+        val searchListRepository = SearchListRepository(UserDatabase(this))
         val searchViewModelProviderFactory =
             SearchViewModelFactory(
                 application,

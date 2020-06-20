@@ -5,17 +5,17 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.byandev.submission2uiux.data.model.DetailUser
-import com.byandev.submission2uiux.data.repo.DetailUserRepository
+import com.byandev.submission2uiux.data.model.Item
+import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.utils.InternetConnection
 import com.byandev.submission2uiux.utils.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-@Suppress("DEPRECATION")
 class DetailUserViewModel(
     app: Application,
-    private val detailUserRepository: DetailUserRepository
+    private val searchUsersRepository: SearchListRepository
 ) : AndroidViewModel(app) {
 
     val detailUsers: MutableLiveData<Resource<DetailUser>> = MutableLiveData()
@@ -45,7 +45,7 @@ class DetailUserViewModel(
         try {
             val internetConnection = InternetConnection(getApplication())
             if (internetConnection.hasInternetConnection()) {
-                val response = detailUserRepository.fetchDetailUsers(userName)
+                val response = searchUsersRepository.fetchDetailUsers(userName)
                 detailUsers.postValue(handleDetailUserResponse(response))
             } else {
                 detailUsers.postValue(Resource.Error("No internet connection"))
@@ -57,5 +57,16 @@ class DetailUserViewModel(
             }
         }
     }
+
+    fun saveUser(item: Item) = viewModelScope.launch {
+        searchUsersRepository.createUserFav(item)
+    }
+
+//    fun getSavedUser() = searchUsersRepository.readUserFav()
+//
+//    fun deleteUser(item: Item) = viewModelScope.launch {
+//        searchUsersRepository.deleteUserFav(item)
+//    }
+
 
 }

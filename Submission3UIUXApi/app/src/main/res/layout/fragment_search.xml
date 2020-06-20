@@ -42,8 +42,6 @@
                     android:inputType="textCapWords"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="?attr/text_search"
-                    android:textColorHint="?attr/text_search"
                     android:drawablePadding="15dp"
                     android:textSize="14sp"
                     android:importantForAutofill="no" />

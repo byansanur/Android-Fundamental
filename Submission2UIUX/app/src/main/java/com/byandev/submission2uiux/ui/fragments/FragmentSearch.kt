@@ -118,9 +118,12 @@ class FragmentSearch : Fragment() {
             }
         })
 
-        fbSettingsTranslate.setOnClickListener {
+        fabSetting.setOnClickListener {
             val intent = Intent(context, SettingsActivity::class.java)
             context?.startActivity(intent)
+        }
+        fabFavorite.setOnClickListener {
+            findNavController().navigate(R.id.action_fragmentSearch_to_favFragment)
         }
 
     }

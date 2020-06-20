@@ -1,9 +1,9 @@
 package com.byandev.submission2uiux.ui.viewModel.search
-
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.byandev.submission2uiux.data.model.Item
 import com.byandev.submission2uiux.data.model.SearchModel
 import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.utils.Constants.Companion.QUERY_PAGE_SIZE
@@ -13,8 +13,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.io.IOException
 
-
-@Suppress("DEPRECATION")
 class SearchViewModel (
     app: Application,
     private val searchUsersRepository: SearchListRepository
@@ -63,6 +61,16 @@ class SearchViewModel (
                 else -> searchUsers.postValue(Resource.Error("Conversion Error"))
             }
         }
+    }
+
+    fun getSavedUser() = searchUsersRepository.readUserFav()
+
+    fun deleteUser(item: Item) = viewModelScope.launch {
+        searchUsersRepository.deleteUserFav(item)
+    }
+
+    fun saveUser(item: Item) = viewModelScope.launch {
+        searchUsersRepository.createUserFav(item)
     }
 
 
