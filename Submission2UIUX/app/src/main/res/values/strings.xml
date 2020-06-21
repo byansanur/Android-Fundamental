@@ -36,5 +36,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="notification">Notification</string>
     <string name="activate_the_reminder_to_return_to_the_application">Activate the reminder to return to the application at 9:00 a.m.</string>
+    <string name="favorite">Favorite</string>
 
 </resources>

@@ -36,4 +36,5 @@
     <string name="no_data_searching_desc">Silahkan masukan kata kunci yang sesuai</string>
     <string name="notification">Pemberitahuan</string>
     <string name="activate_the_reminder_to_return_to_the_application">Aktifkan pengingat untuk kembali ke aplikasi pada pukul 09:00 pagi</string>
+    <string name="favorite">Favorit</string>
 </resources>

@@ -29,6 +29,10 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
 
         setRvFav()
 
+        toolbar.title = getString(R.string.favorite)
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
+        toolbar.setNavigationOnClickListener { findNavController().navigate(R.id.action_favFragment_to_fragmentSearch) }
+
         adapterSearch.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("search", it)

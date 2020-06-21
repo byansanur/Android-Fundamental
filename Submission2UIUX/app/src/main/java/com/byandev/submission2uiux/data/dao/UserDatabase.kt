@@ -8,7 +8,7 @@ import com.byandev.submission2uiux.data.model.Item
 
 @Database(
     entities = [Item::class],
-    version = 1
+    version = 2
 )
 abstract class UserDatabase : RoomDatabase() {
 
@@ -28,7 +28,9 @@ abstract class UserDatabase : RoomDatabase() {
                 context,
                 UserDatabase::class.java,
                 "user_fav.db"
-            ).build()
+            )
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
 }
