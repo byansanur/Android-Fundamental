@@ -25,7 +25,6 @@ import com.byandev.submission2uiux.ui.viewModel.followFollow.FollowingViewModelF
 import com.byandev.submission2uiux.utils.Resource
 import com.byandev.submission2uiux.utils.ViewPagerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.bs_detail_user_layout.view.*
 import kotlinx.android.synthetic.main.detail_activity.*
 
@@ -39,6 +38,9 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var saveDataTheme: SaveDataTheme
     private lateinit var bottomSheetDialog: BottomSheetDialog
+
+    var favUser:Boolean = true
+    private var itemFavorite: MenuItem? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -98,15 +100,35 @@ class DetailActivity : AppCompatActivity() {
                 .centerInside()
                 .into(htab_header)
         }
+//        val isfav = userName.isFav
+//        if (isfav) {
+//            val iconFav = getDrawable(R.drawable.ic_baseline_favorite_border_24)
+//            imgFav.setImageDrawable(iconFav)
+//        } else {
+//            val iconFav = getDrawable(R.drawable.ic_baseline_favorite_24)
+//            imgFav.setImageDrawable(iconFav)
+//        }
+        cekFavorite()
 
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
         htab_viewpager.adapter = viewPagerAdapter
         htab_tabs.setupWithViewPager(htab_viewpager)
 
-        imgFav.setOnClickListener {
-            viewModel.saveUser(userName)
-            Snackbar.make(it, "User is save in local db", Snackbar.LENGTH_LONG).show()
-        }
+//        imgFav.setOnClickListener {
+//            if (!favUser) {
+//                val iconFav = getDrawable(R.drawable.ic_baseline_favorite_24)
+//                imgFav.setImageDrawable(iconFav)
+//                viewModel.saveUser(userName)
+//                Snackbar.make(it, "User is save in local db", Snackbar.LENGTH_LONG).apply {
+//                    setAction("Undo") {
+//                        viewModel.deleteUser(userName)
+//                        val iconFavUnCheck = getDrawable(R.drawable.ic_baseline_favorite_border_24)
+//                        imgFav.setImageDrawable(iconFavUnCheck)
+//                    }
+//                    show()
+//                }
+//            }
+//        }
 
     }
 
@@ -146,14 +168,33 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_options, menu)
+        itemFavorite = menu?.findItem(R.id.favorite_badge)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.info_badge) {
-            bottomSheetDialog.show()
+        when(item.itemId) {
+            R.id.info_badge -> bottomSheetDialog.show()
+            R.id.favorite_badge -> {
+                val itemUser = args.search
+                viewModel.saveUser(itemUser)
+                Toast.makeText(this, "Success add ${itemUser.login} to favorite", Toast.LENGTH_SHORT).show()
+                cekFavorite()
+
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun cekFavorite() {
+        val itemUser = args.search
+        if (!itemUser.isFav) {
+            itemFavorite?.icon = getDrawable(R.drawable.ic_baseline_favorite_24)
+        }else {
+            itemFavorite?.icon = getDrawable(R.drawable.ic_baseline_favorite_border_24)
+        }
+
+
     }
 
 

@@ -13,5 +13,6 @@ data class Item(
     var id: Int = 0,
     var login: String? = null,
     var avatar_url: String? = null,
-    var type: String? = null
+    var type: String? = null,
+    var isFav: Boolean = false
 ) : Serializable

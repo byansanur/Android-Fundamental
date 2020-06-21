@@ -62,11 +62,9 @@ class DetailUserViewModel(
         searchUsersRepository.createUserFav(item)
     }
 
-//    fun getSavedUser() = searchUsersRepository.readUserFav()
-//
-//    fun deleteUser(item: Item) = viewModelScope.launch {
-//        searchUsersRepository.deleteUserFav(item)
-//    }
+    fun deleteUser(item: Item) = viewModelScope.launch {
+        searchUsersRepository.deleteUserFav(item)
+    }
 
 
 }
