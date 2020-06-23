@@ -1,2 +1,3 @@
+include ':consumersubmission'
 rootProject.name='Submission2UIUX'
 include ':app'

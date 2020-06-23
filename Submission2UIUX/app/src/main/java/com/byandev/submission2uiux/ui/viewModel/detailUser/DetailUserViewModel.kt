@@ -66,5 +66,6 @@ class DetailUserViewModel(
         searchUsersRepository.deleteUserFav(item)
     }
 
+    fun getSavedUser() = searchUsersRepository.readUserFav()
 
 }

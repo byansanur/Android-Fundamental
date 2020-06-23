@@ -32,6 +32,8 @@ class DetailActivity : AppCompatActivity() {
 
     val args: DetailActivityArgs by navArgs()
 
+
+
     private lateinit var viewModel: DetailUserViewModel
     lateinit var viewModelFollowers: FollowersViewModel
     lateinit var viewModelFollowing: FollowingViewModel
@@ -39,8 +41,10 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var saveDataTheme: SaveDataTheme
     private lateinit var bottomSheetDialog: BottomSheetDialog
 
-    var favUser:Boolean = true
-    private var itemFavorite: MenuItem? = null
+//    private lateinit var favDbHelper: FavDbHelper
+
+    var isFavorite:Boolean = false
+    private var menuItem: Menu? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,36 +104,30 @@ class DetailActivity : AppCompatActivity() {
                 .centerInside()
                 .into(htab_header)
         }
-//        val isfav = userName.isFav
-//        if (isfav) {
-//            val iconFav = getDrawable(R.drawable.ic_baseline_favorite_border_24)
-//            imgFav.setImageDrawable(iconFav)
-//        } else {
-//            val iconFav = getDrawable(R.drawable.ic_baseline_favorite_24)
-//            imgFav.setImageDrawable(iconFav)
-//        }
-        cekFavorite()
 
+        viewPagerState()
+
+
+        favoriteState()
+
+    }
+
+    private fun viewPagerState() {
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
         htab_viewpager.adapter = viewPagerAdapter
         htab_tabs.setupWithViewPager(htab_viewpager)
+    }
 
-//        imgFav.setOnClickListener {
-//            if (!favUser) {
-//                val iconFav = getDrawable(R.drawable.ic_baseline_favorite_24)
-//                imgFav.setImageDrawable(iconFav)
-//                viewModel.saveUser(userName)
-//                Snackbar.make(it, "User is save in local db", Snackbar.LENGTH_LONG).apply {
-//                    setAction("Undo") {
-//                        viewModel.deleteUser(userName)
-//                        val iconFavUnCheck = getDrawable(R.drawable.ic_baseline_favorite_border_24)
-//                        imgFav.setImageDrawable(iconFavUnCheck)
-//                    }
-//                    show()
-//                }
+    private fun favoriteState() {
+//        val userName = args.search.login
+//        val result = favDbHelper.queryByUsername(userName.toString())
+//        val favorite = (1 .. result.count).map {
+//            result.apply {
+//                moveToNext()
+//                getInt(result.getColumnIndexOrThrow(DBContract.FavoriteUser.LOGIN))
 //            }
 //        }
-
+//        if (favorite.isNullOrEmpty()) isFavorite = true
     }
 
 
@@ -166,9 +164,57 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
+
+
+    private fun addFavUser() {
+        val user = args.search
+        viewModel.saveUser(user)
+        toastMessage("Favorite")
+//        try {
+//            val username = args.search.login.toString()
+//            val avatarUrl = args.search.avatar_url.toString()
+//            val type = args.search.type.toString()
+//            val values = ContentValues().apply {
+//                put(DBContract.FavoriteUser.LOGIN, username)
+//                put(DBContract.FavoriteUser.AVATAR_URL, avatarUrl)
+//                put(DBContract.FavoriteUser.TYPE, type)
+//            }
+//            favDbHelper.insert(values)
+//            toastMessage("Favorite")
+//        } catch (e: SQLiteConstraintException) {
+//            toastMessage(e.localizedMessage)
+//        }
+    }
+
+    private fun removeFavUser() {
+        val user = args.search
+        viewModel.deleteUser(user)
+        toastMessage("remove favorite")
+//        try {
+//            val username = args.search.login.toString()
+//            val result = favDbHelper.deleteByLogin(username)
+//            toastMessage("Un-favorite")
+//        }catch (e: SQLiteConstraintException) {
+//            toastMessage(e.localizedMessage)
+//        }
+    }
+
+    private fun toastMessage(s: String) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setUpFav() {
+        if (isFavorite){
+            menuItem?.getItem(0)?.icon = getDrawable(R.drawable.ic_baseline_favorite_24)
+        } else {
+            menuItem?.getItem(0)?.icon = getDrawable(R.drawable.ic_baseline_favorite_border_24)
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_options, menu)
-        itemFavorite = menu?.findItem(R.id.favorite_badge)
+        menuItem = menu
+        setUpFav()
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -176,25 +222,12 @@ class DetailActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.info_badge -> bottomSheetDialog.show()
             R.id.favorite_badge -> {
-                val itemUser = args.search
-                viewModel.saveUser(itemUser)
-                Toast.makeText(this, "Success add ${itemUser.login} to favorite", Toast.LENGTH_SHORT).show()
-                cekFavorite()
-
+                if (isFavorite) removeFavUser() else addFavUser()
+                isFavorite = !isFavorite
+                setUpFav()
             }
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun cekFavorite() {
-        val itemUser = args.search
-        if (!itemUser.isFav) {
-            itemFavorite?.icon = getDrawable(R.drawable.ic_baseline_favorite_24)
-        }else {
-            itemFavorite?.icon = getDrawable(R.drawable.ic_baseline_favorite_border_24)
-        }
-
-
     }
 
 

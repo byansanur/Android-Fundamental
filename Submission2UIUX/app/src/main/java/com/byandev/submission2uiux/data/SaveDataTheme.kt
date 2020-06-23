@@ -17,4 +17,16 @@ class SaveDataTheme(context: Context?) {
         return sharedPreferencesVar?.getBoolean("Dark", false)
     }
 
+    fun setSw(state: Boolean?) {
+        val edior = sharedPreferencesVar?.edit()
+        edior?.putBoolean("alarm", state!!)
+        edior?.apply()
+    }
+
+    fun saveStateAlarm(): Boolean? {
+        return sharedPreferencesVar?.getBoolean("alarm", false)
+    }
+
+
+
 }

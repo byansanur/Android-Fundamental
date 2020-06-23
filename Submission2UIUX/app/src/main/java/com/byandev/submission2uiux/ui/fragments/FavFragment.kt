@@ -2,6 +2,7 @@ package com.byandev.submission2uiux.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.AbsListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -12,8 +13,10 @@ import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.ui.MainActivity
 import com.byandev.submission2uiux.ui.adapter.SearchAdapter
 import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModel
+import com.byandev.submission2uiux.utils.Constants
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_fav.*
+import kotlinx.android.synthetic.main.rv_fav_include.*
 
 
 class FavFragment : Fragment(R.layout.fragment_fav) {
@@ -21,6 +24,11 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
 
     lateinit var viewModel: SearchViewModel
     lateinit var adapterSearch: SearchAdapter
+
+    var isLoading = false
+    var isLastPage = false
+    var isScrolling = false
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,6 +40,7 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
         toolbar.title = getString(R.string.favorite)
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
         toolbar.setNavigationOnClickListener { findNavController().navigate(R.id.action_favFragment_to_fragmentSearch) }
+
 
         adapterSearch.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -72,17 +81,65 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
             attachToRecyclerView(rvFav)
         }
 
-        viewModel.getSavedUser().observe(viewLifecycleOwner, Observer { user ->
-            adapterSearch.differ.submitList(user)
+        imgNoData.visibility = View.VISIBLE
+        pbLoad.visibility = View.VISIBLE
+
+        viewModel.getSavedUser().observe(viewLifecycleOwner, Observer {
+            imgNoData.visibility = View.GONE
+            pbLoad.visibility = View.GONE
+            if (it.isNullOrEmpty()) {
+                imgNoData.visibility = View.VISIBLE
+                pbLoad.visibility = View.GONE
+            } else {
+                adapterSearch.differ.submitList(it.toList())
+                if (isLastPage) {
+                    rvFav.setPadding(0,10,0,0)
+                }
+            }
+
         })
+
 
     }
 
     private fun setRvFav() {
         adapterSearch = SearchAdapter()
+        adapterSearch.notifyDataSetChanged()
+
         rvFav.apply {
-            adapter = adapterSearch
             layoutManager = LinearLayoutManager(context)
+            adapter = adapterSearch
+            addOnScrollListener(this@FavFragment.onScrollListener)
+        }
+    }
+
+    private val onScrollListener = object : RecyclerView.OnScrollListener() {
+        override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+            super.onScrolled(recyclerView, dx, dy)
+            pbLoad.visibility = View.GONE
+            val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+            val firsVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+            val visibleItemCount = layoutManager.childCount
+            val totalItemCount = layoutManager.itemCount
+
+            val isNotLoadingAndNotLastPage = !isLoading && ! isLastPage
+            val isAtLastItem = firsVisibleItemPosition + visibleItemCount >= totalItemCount
+            val isNotAtBeginning = firsVisibleItemPosition >= 0
+            val isTotalMoreThanVisible = totalItemCount >= Constants.QUERY_PAGE_SIZE
+            val shouldPaginate = isNotLoadingAndNotLastPage && isAtLastItem && isNotAtBeginning &&
+                    isTotalMoreThanVisible && isScrolling
+            if (shouldPaginate) {
+                viewModel.getSavedUser()
+                isScrolling = false
+            }
+        }
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                isScrolling = true
+            }
+            pbLoad.visibility = View.GONE
         }
     }
 

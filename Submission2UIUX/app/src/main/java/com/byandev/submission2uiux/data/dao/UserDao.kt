@@ -1,5 +1,6 @@
 package com.byandev.submission2uiux.data.dao
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.byandev.submission2uiux.data.model.Item
@@ -14,4 +15,8 @@ interface UserDao {
 
     @Delete
     suspend fun deleteUser(item: Item)
+
+    @Query("SELECT * FROM user")
+    fun selectUser() : Cursor
+
 }
