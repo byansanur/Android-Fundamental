@@ -8,7 +8,7 @@ import com.byandev.submission2uiux.data.model.Item
 
 @Database(
     entities = [Item::class],
-    version = 2
+    version = 8
 )
 abstract class UserDatabase : RoomDatabase() {
 
@@ -20,7 +20,9 @@ abstract class UserDatabase : RoomDatabase() {
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
-            instance ?: createDatabase(context).also { instance = it }
+            instance ?: createDatabase(context).also {
+                instance = it
+            }
         }
 
         private fun createDatabase(context: Context) =

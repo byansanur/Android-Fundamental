@@ -37,5 +37,10 @@
     <string name="notification">Notification</string>
     <string name="activate_the_reminder_to_return_to_the_application">Activate the reminder to return to the application at 9:00 a.m.</string>
     <string name="favorite">Favorite</string>
+    <string name="app_notification_channel_id" translatable="false">app_channel</string>
+    <string name="notification_title">Hello world</string>
+    <string name="empty_text">NO DATA</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 </resources>
