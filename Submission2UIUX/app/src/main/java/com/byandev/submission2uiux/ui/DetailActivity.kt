@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navArgs
 import com.bumptech.glide.Glide
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.SaveDataTheme
+import com.byandev.submission2uiux.data.SharedPref
 import com.byandev.submission2uiux.data.dao.UserDatabase
 import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.ui.viewModel.detailUser.DetailUserViewModel
@@ -32,25 +32,21 @@ class DetailActivity : AppCompatActivity() {
 
     val args: DetailActivityArgs by navArgs()
 
-
-
     private lateinit var viewModel: DetailUserViewModel
     lateinit var viewModelFollowers: FollowersViewModel
     lateinit var viewModelFollowing: FollowingViewModel
 
-    private lateinit var saveDataTheme: SaveDataTheme
+    private lateinit var sharedPref: SharedPref
     private lateinit var bottomSheetDialog: BottomSheetDialog
 
-//    private lateinit var favDbHelper: FavDbHelper
-
-    var isFavorite:Boolean = false
+    private var isFavorite:Boolean = false
     private var menuItem: Menu? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        saveDataTheme = SaveDataTheme(this)
-        if (saveDataTheme.loadModeState() == true) {
+        sharedPref = SharedPref(this)
+        if (sharedPref.loadModeState() == true) {
             setTheme(R.style.DarkThem)
         } else {
             setTheme(R.style.AppTheme)
@@ -58,7 +54,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
 
-        val userName = args.search
+
+
 
         val detailRepository = SearchListRepository(UserDatabase(this))
         val detailUserViewModelProviderFactory =
@@ -95,22 +92,26 @@ class DetailActivity : AppCompatActivity() {
 
         dataInfoUser()
 
+        val item = args.search
 
-        viewModel.detailUserFetch(userName.login!!)
-        supportActionBar?.title = userName.login
+        viewModel.detailUserFetch(item.login!!)
+        supportActionBar?.title = item.login
         htab_header.apply {
             Glide.with(this)
-                .load(userName.avatar_url)
-                .centerInside()
+                .load(item.avatar_url)
                 .into(htab_header)
         }
 
+        if (!item.isFavorite) {
+            menuItem?.getItem(0)?.icon = getDrawable(R.drawable.ic_baseline_favorite_24)
+        } else menuItem?.getItem(0)?.icon = getDrawable(R.drawable.ic_baseline_favorite_border_24)
+
+
         viewPagerState()
 
-
-        favoriteState()
-
     }
+
+
 
     private fun viewPagerState() {
         val viewPagerAdapter = ViewPagerAdapter(this, supportFragmentManager)
@@ -118,17 +119,6 @@ class DetailActivity : AppCompatActivity() {
         htab_tabs.setupWithViewPager(htab_viewpager)
     }
 
-    private fun favoriteState() {
-//        val userName = args.search.login
-//        val result = favDbHelper.queryByUsername(userName.toString())
-//        val favorite = (1 .. result.count).map {
-//            result.apply {
-//                moveToNext()
-//                getInt(result.getColumnIndexOrThrow(DBContract.FavoriteUser.LOGIN))
-//            }
-//        }
-//        if (favorite.isNullOrEmpty()) isFavorite = true
-    }
 
 
     @SuppressLint("InflateParams")
@@ -164,39 +154,16 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
-
-
     private fun addFavUser() {
-        val user = args.search
-        viewModel.saveUser(user)
-        toastMessage("Favorite")
-//        try {
-//            val username = args.search.login.toString()
-//            val avatarUrl = args.search.avatar_url.toString()
-//            val type = args.search.type.toString()
-//            val values = ContentValues().apply {
-//                put(DBContract.FavoriteUser.LOGIN, username)
-//                put(DBContract.FavoriteUser.AVATAR_URL, avatarUrl)
-//                put(DBContract.FavoriteUser.TYPE, type)
-//            }
-//            favDbHelper.insert(values)
-//            toastMessage("Favorite")
-//        } catch (e: SQLiteConstraintException) {
-//            toastMessage(e.localizedMessage)
-//        }
+        val itemFav = args.search
+        viewModel.saveUser(itemFav)
+        toastMessage("add db")
     }
 
     private fun removeFavUser() {
-        val user = args.search
-        viewModel.deleteUser(user)
-        toastMessage("remove favorite")
-//        try {
-//            val username = args.search.login.toString()
-//            val result = favDbHelper.deleteByLogin(username)
-//            toastMessage("Un-favorite")
-//        }catch (e: SQLiteConstraintException) {
-//            toastMessage(e.localizedMessage)
-//        }
+        val itemFav = args.search
+        viewModel.deleteUser(itemFav)
+        toastMessage("delete db")
     }
 
     private fun toastMessage(s: String) {

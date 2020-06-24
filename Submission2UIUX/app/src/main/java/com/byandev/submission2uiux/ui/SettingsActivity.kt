@@ -4,31 +4,28 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Switch
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.byandev.submission2uiux.BuildConfig
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.SaveDataTheme
-import com.byandev.submission2uiux.utils.NotificationUtils
+import com.byandev.submission2uiux.data.SharedPref
+import com.byandev.submission2uiux.notification.AlarmNotificationReceiver
+import com.byandev.submission2uiux.notification.NotificationScheduler
 import kotlinx.android.synthetic.main.activity_settings.*
-import java.util.*
 
 
 class SettingsActivity : AppCompatActivity() {
 
     private var switchTheme: Switch? = null
     private var swNotificationAlarm: Switch? = null
-    private lateinit var saveDataTheme: SaveDataTheme
-
-    private val mNotificationTime = Calendar.getInstance().timeInMillis + 300000 // set 5 minute
-    private var mNotified = false
+    private lateinit var sharedPref: SharedPref
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        saveDataTheme = SaveDataTheme(this)
-        if (saveDataTheme.loadModeState() == true) {
+        sharedPref = SharedPref(this)
+        if (sharedPref.loadModeState() == true) {
             setTheme(R.style.DarkThem)
         } else {
             setTheme(R.style.AppTheme)
@@ -38,14 +35,13 @@ class SettingsActivity : AppCompatActivity() {
 
         listener()
 
-        if (saveDataTheme.loadModeState() == true) {
+        if (sharedPref.loadModeState() == true) {
             switchTheme?.isChecked = true
 
         }
 
-        if (saveDataTheme.saveStateAlarm() == true) {
-            swNotificationAlarm?.isChecked = true
-        }
+        sharedPref.getReminderStatus()?.let { swNotificationAlarm?.setChecked(it) }
+
 
 
         setSwitch()
@@ -79,24 +75,21 @@ class SettingsActivity : AppCompatActivity() {
     private fun setSwitch() {
         switchTheme?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                saveDataTheme.setDarkModeState(true)
+                sharedPref.setDarkModeState(true)
                 resetApp()
             } else {
-                saveDataTheme.setDarkModeState(false)
+                sharedPref.setDarkModeState(false)
                 resetApp()
             }
         }
         swNotificationAlarm?.setOnCheckedChangeListener { _, isChecked ->
+            sharedPref.setRemainder(isChecked)
             if (isChecked) {
-                if (!mNotified) {
-                    NotificationUtils().setNotification(mNotificationTime, this)
-                    Toast.makeText(this, "true mNotified", Toast.LENGTH_SHORT).show()
-                    saveDataTheme.setSw(true)
-                }
+                NotificationScheduler.setReminder(this, AlarmNotificationReceiver::class.java)
+                Log.d("Setting alarm", "setSwitch: on")
             } else {
-                NotificationUtils().resetNotification(mNotificationTime, this)
-                Toast.makeText(this, "false mNotified", Toast.LENGTH_SHORT).show()
-                saveDataTheme.setSw(false)
+                NotificationScheduler.cancelReminder(this, AlarmNotificationReceiver::class.java)
+                Log.d("Setting alarm", "setSwitch: off")
             }
         }
     }

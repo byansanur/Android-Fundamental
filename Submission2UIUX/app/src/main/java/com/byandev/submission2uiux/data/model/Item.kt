@@ -6,15 +6,15 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
+
 @Entity(
-    tableName = "user",
+    tableName = "tb_favorite",
     indices = [Index(value = ["login"], unique = true)]
 )
 data class Item(
-    @PrimaryKey (autoGenerate = true)
-    var UIDs: Int = 0,
-    var id: Int = 0,
+    @PrimaryKey var id: Int = 0,
     @ColumnInfo(name = "login") var login: String? = null,
     var avatar_url: String? = null,
-    var type: String? = null
+    var type: String? = null,
+    var isFavorite: Boolean = false
 ) : Serializable

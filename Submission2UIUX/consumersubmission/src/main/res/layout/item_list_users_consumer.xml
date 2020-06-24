@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@drawable/background_item">
+    android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/imgUsers"
         android:layout_width="65dp"
         android:layout_height="65dp"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@string/TODO"
         android:src="@drawable/user1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +24,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="32dp"
         android:maxLines="2"
-        android:textColor="?attr/Text_Color"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

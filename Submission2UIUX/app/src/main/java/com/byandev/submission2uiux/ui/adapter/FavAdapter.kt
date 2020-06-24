@@ -3,62 +3,63 @@ package com.byandev.submission2uiux.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Priority
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.model.FavoriteItem
-import kotlinx.android.synthetic.main.item_list_favorite.view.*
-import java.util.*
+import com.byandev.submission2uiux.data.model.Item
+import kotlinx.android.synthetic.main.item_list_users.view.*
 
 class FavAdapter : RecyclerView.Adapter<FavAdapter.Holder>() {
 
-    var listFavoriteUser = ArrayList<FavoriteItem>()
-        set(listFavoriteUser) {
-            if (listFavoriteUser.size > 0) {
-                this.listFavoriteUser.clear()
-            }
-            this.listFavoriteUser.addAll(listFavoriteUser)
-            notifyDataSetChanged()
+    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    private val differCallback = object : DiffUtil.ItemCallback<Item> () {
+        override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return oldItem.id == newItem.id
         }
+
+        override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            return  oldItem == newItem
+        }
+    }
+    val differ = AsyncListDiffer(this, differCallback)
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = 
-            LayoutInflater.from(parent.context).inflate(R.layout.item_list_users, parent, false)
-        return Holder(view)
+        return Holder(
+            LayoutInflater.from(parent.context)
+                .inflate(
+                    R.layout.item_list_users,
+                    parent,
+                    false
+                )
+        )
     }
+
+    override fun getItemCount(): Int = differ.currentList.size
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(listFavoriteUser[position])
-    }
-
-    override fun getItemCount(): Int = this.listFavoriteUser.size
-
-    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(favoriteUserItems: FavoriteItem) {
-            with(itemView){
-                tvUserName.text = favoriteUserItems.login
-                Glide.with(context)
-                    .load(favoriteUserItems.avatar_url)
-                    .apply(
-                        RequestOptions()
-                        .override(56,56)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .priority(Priority.HIGH))
-                    .into(imgUsers)
-                setOnClickListener {
-                    onItemClickListener?.let { it(favoriteUserItems) }
-                }
+        val favoriteItem = differ.currentList[position]
+        holder.itemView.apply {
+            Glide.with(this)
+                .load(favoriteItem.avatar_url)
+                .centerCrop()
+                .into(imgUsers)
+            tvUserName.text = favoriteItem?.login
+            setOnClickListener {
+                onItemClickListener?.let { it(favoriteItem) }
             }
         }
     }
 
-    private var onItemClickListener: ((FavoriteItem) -> Unit)? = null
+    private var onItemClickListener: ((Item) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (FavoriteItem) -> Unit) {
+    fun setOnItemClickListener(listener: (Item) -> Unit) {
         onItemClickListener = listener
     }
+
 
 }

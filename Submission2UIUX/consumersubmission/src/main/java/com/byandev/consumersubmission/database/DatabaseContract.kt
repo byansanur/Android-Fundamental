@@ -1,5 +1,6 @@
-package com.byandev.submission2uiux.data.dao
+package com.byandev.consumersubmission.database
 
+import android.database.Cursor
 import android.net.Uri
 import android.provider.BaseColumns
 
@@ -23,7 +24,22 @@ object DatabaseContract  {
                 .appendPath(TABLE_NAME)
                 .build()
 
+            fun getColumnString(cursor: Cursor, columnName: String?): String? {
+                return cursor.getString(cursor.getColumnIndex(columnName))
+            }
+
+            fun getColumnInt(cursor: Cursor, columnName: String?): Int {
+                return cursor.getInt(cursor.getColumnIndex(columnName))
+            }
+
+            fun getColumnBool(
+                cursor: Cursor,
+                columnName: String?
+            ): Boolean {
+                return cursor.getInt(cursor.getColumnIndex(columnName)) > 0
+            }
         }
+
 
     }
 }
