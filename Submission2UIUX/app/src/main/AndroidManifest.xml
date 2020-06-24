@@ -24,9 +24,17 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup"
         tools:targetApi="n">
+        <receiver
+            android:name=".notification.AlarmNotificationReceiver"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".widget.StackWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <receiver android:name=".widget.FavoriteWidget">
             <intent-filter>
@@ -45,14 +53,6 @@
             android:exported="true"
             android:readPermission="com.byandev.submission2uiux.READ_DATABASE"
             android:writePermission="com.byandev.submission2uiux.WRITE_DATABASE" />
-
-        <service
-            android:name=".alarm.NotificationService"
-            android:enabled="true" />
-
-        <receiver
-            android:name=".alarm.AlarmReceiver"
-            android:enabled="true" />
 
         <activity android:name=".ui.SplashActivity">
             <intent-filter>

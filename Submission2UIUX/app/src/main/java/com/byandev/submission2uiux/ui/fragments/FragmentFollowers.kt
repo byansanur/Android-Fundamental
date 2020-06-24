@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.SaveDataTheme
+import com.byandev.submission2uiux.data.SharedPref
 import com.byandev.submission2uiux.ui.DetailActivity
 import com.byandev.submission2uiux.ui.adapter.FollowersAdapter
 import com.byandev.submission2uiux.ui.viewModel.followFollow.FollowersViewModel
@@ -29,7 +29,7 @@ class FragmentFollowers : Fragment() {
 
     private lateinit var viewModel: FollowersViewModel
     private lateinit var followersAdapter: FollowersAdapter
-    private lateinit var saveDataTheme: SaveDataTheme
+    private lateinit var sharedPref: SharedPref
     private var isLoading = false
     private var isLastPage = false
     private var isScrolling = false
@@ -44,8 +44,8 @@ class FragmentFollowers : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        saveDataTheme = SaveDataTheme(context)
-        if (saveDataTheme.loadModeState() == true) {
+        sharedPref = SharedPref(context)
+        if (sharedPref.loadModeState() == true) {
             requireActivity().setTheme(R.style.DarkThem)
         } else {
             requireActivity().setTheme(R.style.AppTheme)

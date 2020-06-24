@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.ui.MainActivity
-import com.byandev.submission2uiux.ui.adapter.SearchAdapter
+import com.byandev.submission2uiux.ui.adapter.FavAdapter
 import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModel
 import com.byandev.submission2uiux.utils.Constants
 import com.google.android.material.snackbar.Snackbar
@@ -23,7 +23,7 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
 
 
     lateinit var viewModel: SearchViewModel
-    lateinit var adapterSearch: SearchAdapter
+    lateinit var adapterFav: FavAdapter
 
     var isLoading = false
     var isLastPage = false
@@ -42,7 +42,7 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
         toolbar.setNavigationOnClickListener { findNavController().navigate(R.id.action_favFragment_to_fragmentSearch) }
 
 
-        adapterSearch.setOnItemClickListener {
+        adapterFav.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("search", it)
             }
@@ -66,7 +66,7 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val user = adapterSearch.differ.currentList[position]
+                val user = adapterFav.differ.currentList[position]
                 viewModel.deleteUser(user)
                 Snackbar.make(view, "User has deleted successfully", Snackbar.LENGTH_LONG).apply {
                     setAction("Undo") {
@@ -91,7 +91,7 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
                 imgNoData.visibility = View.VISIBLE
                 pbLoad.visibility = View.GONE
             } else {
-                adapterSearch.differ.submitList(it.toList())
+                adapterFav.differ.submitList(it.toList())
                 if (isLastPage) {
                     rvFav.setPadding(0,10,0,0)
                 }
@@ -103,12 +103,12 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
     }
 
     private fun setRvFav() {
-        adapterSearch = SearchAdapter()
-        adapterSearch.notifyDataSetChanged()
+        adapterFav = FavAdapter()
+        adapterFav.notifyDataSetChanged()
 
         rvFav.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = adapterSearch
+            adapter = adapterFav
             addOnScrollListener(this@FavFragment.onScrollListener)
         }
     }

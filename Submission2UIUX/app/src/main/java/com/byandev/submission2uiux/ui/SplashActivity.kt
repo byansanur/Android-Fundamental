@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.SaveDataTheme
+import com.byandev.submission2uiux.data.SharedPref
 
 class SplashActivity : AppCompatActivity() {
 
-    private lateinit var saveDataTheme: SaveDataTheme
+    private lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        saveDataTheme = SaveDataTheme(this)
-        if (saveDataTheme.loadModeState() == true) {
+        sharedPref = SharedPref(this)
+        if (sharedPref.loadModeState() == true) {
             setTheme(R.style.DarkThem)
         } else {
             setTheme(R.style.AppTheme)

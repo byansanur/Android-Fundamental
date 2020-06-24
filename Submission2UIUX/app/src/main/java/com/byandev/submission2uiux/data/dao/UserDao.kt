@@ -8,15 +8,15 @@ import com.byandev.submission2uiux.data.model.Item
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun createUser(item: Item) : Long
+    suspend fun createUser(favoriteItem: Item) : Long
 
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM tb_favorite")
     fun readUser(): LiveData<List<Item>>
 
     @Delete
-    suspend fun deleteUser(item: Item)
+    suspend fun deleteUser(favoriteItem: Item)
 
-    @Query("SELECT * FROM user")
+    @Query("SELECT * FROM tb_favorite")
     fun selectUser() : Cursor
 
 }

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.SaveDataTheme
+import com.byandev.submission2uiux.data.SharedPref
 import com.byandev.submission2uiux.ui.MainActivity
 import com.byandev.submission2uiux.ui.SettingsActivity
 import com.byandev.submission2uiux.ui.adapter.SearchAdapter
@@ -34,7 +34,7 @@ class FragmentSearch : Fragment() {
 
     private lateinit var viewModel: SearchViewModel
     private lateinit var searchAdapter: SearchAdapter
-    private lateinit var saveDataTheme: SaveDataTheme
+    private lateinit var sharedPref: SharedPref
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,8 +50,8 @@ class FragmentSearch : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        saveDataTheme = SaveDataTheme(context)
-        if (saveDataTheme.loadModeState() == true) {
+        sharedPref = SharedPref(context)
+        if (sharedPref.loadModeState() == true) {
             requireActivity().setTheme(R.style.DarkThem)
         } else {
             requireActivity().setTheme(R.style.AppTheme)

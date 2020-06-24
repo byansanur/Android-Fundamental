@@ -18,9 +18,9 @@ class SearchListRepository(val db: UserDatabase) {
     suspend fun userFollowing(userName: String, pageNumber: Int) =
         RetrofitInstance.api.following(userName, pageNumber)
 
-    suspend fun createUserFav(item: Item) = db.getUserDao().createUser(item)
+    suspend fun createUserFav(favoriteItem: Item) = db.getUserDao().createUser(favoriteItem)
 
     fun readUserFav() = db.getUserDao().readUser()
 
-    suspend fun deleteUserFav(item: Item) = db.getUserDao().deleteUser(item)
+    suspend fun deleteUserFav(favoriteItem: Item) = db.getUserDao().deleteUser(favoriteItem)
 }

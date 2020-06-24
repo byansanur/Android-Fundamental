@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.byandev.submission2uiux.R
-import com.byandev.submission2uiux.data.SaveDataTheme
+import com.byandev.submission2uiux.data.SharedPref
 import com.byandev.submission2uiux.data.dao.UserDatabase
 import com.byandev.submission2uiux.data.repo.SearchListRepository
 import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModel
@@ -17,12 +17,12 @@ class MainActivity : AppCompatActivity() {
 
 
     lateinit var viewModel: SearchViewModel
-    private lateinit var saveDataTheme: SaveDataTheme
+    private lateinit var sharedPref: SharedPref
     private var doubleClickBackToExit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        saveDataTheme = SaveDataTheme(this)
-        if (saveDataTheme.loadModeState() == true) {
+        sharedPref = SharedPref(this)
+        if (sharedPref.loadModeState() == true) {
             setTheme(R.style.DarkThem)
         } else {
             setTheme(R.style.AppTheme)
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if (saveDataTheme.loadModeState() == true) {
+        if (sharedPref.loadModeState() == true) {
             setTheme(R.style.DarkThem)
         } else {
             setTheme(R.style.AppTheme)
