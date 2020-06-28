@@ -1,5 +1,7 @@
 package com.byandev.submission2uiux.data.model
 
+import java.io.Serializable
+
 class FollowersSource : ArrayList<FollowersSourceItem>()
 
 data class FollowersSourceItem(
@@ -21,4 +23,4 @@ data class FollowersSourceItem(
     val subscriptions_url: String,
     val type: String,
     val url: String
-)
+) : Serializable

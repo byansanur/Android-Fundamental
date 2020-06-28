@@ -1,14 +1,10 @@
 package com.byandev.submission2uiux.widget
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
-import android.widget.RemoteViews
 import android.widget.Toast
-import androidx.core.net.toUri
-import com.byandev.submission2uiux.R
 
 /**
  * Implementation of App Widget functionality.
@@ -25,29 +21,29 @@ class FavoriteWidget : AppWidgetProvider() {
             appWidgetId: Int
         ) {
 
-            val intent = Intent(context, StackWidgetService::class.java)
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-            intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
-
-            val views = RemoteViews(context.packageName, R.layout.favorite_widget)
-            views.setRemoteAdapter(R.id.stack_view, intent)
-            views.setEmptyView(R.id.stack_view, R.id.empty_view)
-
-            val toastIntent = Intent(context, FavoriteWidget::class.java)
-            toastIntent.action = TOAST_ACTION
-            toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-            intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
-
-            val toastPendingIntent = PendingIntent.getBroadcast(
-                context,
-                0,
-                toastIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
-            )
-            views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
-
-            // Instruct the widget manager to update the widget
-            appWidgetManager.updateAppWidget(appWidgetId, views)
+//            val intent = Intent(context, StackWidgetService::class.java)
+//            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+//            intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
+//
+//            val views = RemoteViews(context.packageName, R.layout.favorite_widget)
+//            views.setRemoteAdapter(R.id.stack_view, intent)
+//            views.setEmptyView(R.id.stack_view, R.id.empty_view)
+//
+//            val toastIntent = Intent(context, FavoriteWidget::class.java)
+//            toastIntent.action = TOAST_ACTION
+//            toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+//            intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
+//
+//            val toastPendingIntent = PendingIntent.getBroadcast(
+//                context,
+//                0,
+//                toastIntent,
+//                PendingIntent.FLAG_UPDATE_CURRENT
+//            )
+//            views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
+//
+//            // Instruct the widget manager to update the widget
+//            appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }
 

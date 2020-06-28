@@ -16,5 +16,5 @@ data class Item(
     @ColumnInfo(name = "login") var login: String? = null,
     var avatar_url: String? = null,
     var type: String? = null,
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = true
 ) : Serializable

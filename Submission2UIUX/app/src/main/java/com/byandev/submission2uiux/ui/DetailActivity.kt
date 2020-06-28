@@ -102,7 +102,7 @@ class DetailActivity : AppCompatActivity() {
                 .into(htab_header)
         }
 
-        if (!item.isFavorite) {
+        if (item.isFavorite) {
             menuItem?.getItem(0)?.icon = getDrawable(R.drawable.ic_baseline_favorite_24)
         } else menuItem?.getItem(0)?.icon = getDrawable(R.drawable.ic_baseline_favorite_border_24)
 

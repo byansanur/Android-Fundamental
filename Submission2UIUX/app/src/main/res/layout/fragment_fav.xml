@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:titleTextColor="?attr/Icon_color"
-        app:layout_constraintBottom_toTopOf="@id/includeRv"
+        app:layout_constraintBottom_toTopOf="@id/rvFavorite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,14 +39,14 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/todo" />
 
-
-    <include
-        android:id="@+id/includeRv"
-        layout="@layout/rv_fav_include"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavorite"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        tools:listitem="@layout/item_list_users"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"/>
 
 

@@ -29,8 +29,15 @@
         <action
             android:id="@+id/action_favFragment_to_detailActivity"
             app:destination="@id/detailActivity" />
-        <action
-            android:id="@+id/action_favFragment_to_fragmentSearch"
-            app:destination="@id/fragmentSearch" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFollowers"
+        android:name="com.byandev.submission2uiux.ui.fragments.FragmentFollowers"
+        android:label="FragmentFollowers" >
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFollowing"
+        android:name="com.byandev.submission2uiux.ui.fragments.FragmentFollowing"
+        android:label="FragmentFollowing" >
     </fragment>
 </navigation>

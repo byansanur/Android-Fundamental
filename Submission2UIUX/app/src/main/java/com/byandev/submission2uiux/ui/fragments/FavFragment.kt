@@ -1,7 +1,9 @@
 package com.byandev.submission2uiux.ui.fragments
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AbsListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -16,10 +18,9 @@ import com.byandev.submission2uiux.ui.viewModel.search.SearchViewModel
 import com.byandev.submission2uiux.utils.Constants
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_fav.*
-import kotlinx.android.synthetic.main.rv_fav_include.*
 
 
-class FavFragment : Fragment(R.layout.fragment_fav) {
+class FavFragment : Fragment() {
 
 
     lateinit var viewModel: SearchViewModel
@@ -29,18 +30,26 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
     var isLastPage = false
     var isScrolling = false
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_fav, container, false)
+
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = (activity as MainActivity).viewModel
 
-        setRvFav()
+        setrvFavorite()
 
         toolbar.title = getString(R.string.favorite)
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
-        toolbar.setNavigationOnClickListener { findNavController().navigate(R.id.action_favFragment_to_fragmentSearch) }
-
+        toolbar.setNavigationOnClickListener { (activity as MainActivity).onBackPressed() }
 
         adapterFav.setOnItemClickListener {
             val bundle = Bundle().apply {
@@ -78,7 +87,7 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
         }
 
         ItemTouchHelper(itemTouchHelperCallback).apply {
-            attachToRecyclerView(rvFav)
+            attachToRecyclerView(rvFavorite)
         }
 
         imgNoData.visibility = View.VISIBLE
@@ -93,7 +102,7 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
             } else {
                 adapterFav.differ.submitList(it.toList())
                 if (isLastPage) {
-                    rvFav.setPadding(0,10,0,0)
+                    rvFavorite.setPadding(0,10,0,0)
                 }
             }
 
@@ -102,11 +111,11 @@ class FavFragment : Fragment(R.layout.fragment_fav) {
 
     }
 
-    private fun setRvFav() {
+    private fun setrvFavorite() {
         adapterFav = FavAdapter()
         adapterFav.notifyDataSetChanged()
 
-        rvFav.apply {
+        rvFavorite.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = adapterFav
             addOnScrollListener(this@FavFragment.onScrollListener)

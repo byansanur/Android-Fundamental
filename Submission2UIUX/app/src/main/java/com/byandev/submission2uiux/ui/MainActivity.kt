@@ -1,8 +1,6 @@
 package com.byandev.submission2uiux.ui
 
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: SearchViewModel
     private lateinit var sharedPref: SharedPref
-    private var doubleClickBackToExit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedPref = SharedPref(this)
@@ -49,16 +46,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             setTheme(R.style.AppTheme)
         }
-    }
-
-    override fun onBackPressed() {
-        if (doubleClickBackToExit) {
-            super.onBackPressed()
-            return
-        }
-        this.doubleClickBackToExit = true
-        Toast.makeText(this, "Tap again to exit", Toast.LENGTH_LONG).show()
-        Handler().postDelayed({ doubleClickBackToExit = false }, 2000)
     }
 
 
