@@ -37,10 +37,6 @@
     <string name="notification">Pemberitahuan</string>
     <string name="activate_the_reminder_to_return_to_the_application">Aktifkan pengingat untuk kembali ke aplikasi pada pukul 09:00 pagi</string>
     <string name="favorite">Favorit</string>
-    <string name="app_notification_channel_id" translatable="false">app_channel</string>
-    <string name="notification_title">Hallo dunia</string>
     <string name="empty_text">NO DATA</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
-    <string name="tap_again_to_exit">Ketuk lagi untuk keluar</string>
+    <string name="content_notif">Apa kabar, Buka lagi aplikasi untuk mencari pengguna github favorit kamu…</string>
 </resources>

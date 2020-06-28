@@ -3,7 +3,7 @@ package com.byandev.consumersubmission
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
@@ -31,14 +31,17 @@ class MainActivity : AppCompatActivity() {
 
         adapterConsumer = AdapterConsumer(this)
 
+        setRv()
+
+        supportLoaderManager.initLoader(LOADER, null, mLoaderCallbacks)
+        pbLoadRv.visibility = View.VISIBLE
+
+    }
+
+    private fun setRv() {
         rv_list_consumer_app.setHasFixedSize(true)
         rv_list_consumer_app.layoutManager = LinearLayoutManager(this)
         rv_list_consumer_app.adapter = adapterConsumer
-
-
-        supportLoaderManager.initLoader(LOADER, null, mLoaderCallbacks)
-
-        Log.d(TAG, "onCreate: $URI_FAV")
     }
 
 
@@ -63,14 +66,18 @@ class MainActivity : AppCompatActivity() {
             override fun onLoadFinished(loader: Loader<Cursor?>, data: Cursor?) {
                 if (loader.id == LOADER) {
                     adapterConsumer.setData(data)
-//                    pbLoadRv.visibility = View.GONE
-                    Log.d(TAG, "onLoadFinished: ${data.toString()}")
+                    pbLoadRv.visibility = View.GONE
+                } else {
+                    pbLoadRv.visibility = View.VISIBLE
                 }
             }
 
             override fun onLoaderReset(loader: Loader<Cursor?>) {
                 if (loader.id == LOADER) {
                     adapterConsumer.setData(null)
+                    pbLoadRv.visibility = View.GONE
+                } else {
+                    pbLoadRv.visibility = View.VISIBLE
                 }
             }
 
