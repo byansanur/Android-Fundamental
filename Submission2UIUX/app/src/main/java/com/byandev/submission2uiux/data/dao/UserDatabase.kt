@@ -8,7 +8,8 @@ import com.byandev.submission2uiux.data.model.Item
 
 @Database(
     entities = [Item::class],
-    version = 9
+    version = 11,
+    exportSchema = false
 )
 abstract class UserDatabase : RoomDatabase() {
 

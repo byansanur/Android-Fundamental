@@ -23,4 +23,8 @@ class SearchListRepository(val db: UserDatabase) {
     fun readUserFav() = db.getUserDao().readUser()
 
     suspend fun deleteUserFav(favoriteItem: Item) = db.getUserDao().deleteUser(favoriteItem)
+
+    fun getWidgetFav(id: Int) = db.getUserDao().getWidget()
+
+    fun getAllWidgetFav() = db.getUserDao().getAllForWidget()
 }

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.byandev.submission2uiux.R
 import com.byandev.submission2uiux.ui.MainActivity
 
 class AlarmNotificationReceiver : BroadcastReceiver() {
@@ -31,6 +32,9 @@ class AlarmNotificationReceiver : BroadcastReceiver() {
 
         Log.d(TAG, "onReceive: ")
 
-        NotificationScheduler.showNotification(context, MainActivity::class.java, "","")
+        val title: String = context.getString(R.string.app_name)
+        val content: String = context.getString(R.string.content_notif)
+
+        NotificationScheduler.showNotification(context, MainActivity::class.java, title,content)
     }
 }

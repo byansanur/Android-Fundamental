@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.byandev.submission2uiux.data.model.Item
 
+
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -18,5 +19,11 @@ interface UserDao {
 
     @Query("SELECT * FROM tb_favorite")
     fun selectUser() : Cursor
+
+    @Query("SELECT * FROM tb_favorite WHERE id = id ")
+    fun getWidget(): List<Item>
+
+    @Query("SELECT * FROM tb_favorite")
+    fun getAllForWidget(): List<Item>
 
 }
